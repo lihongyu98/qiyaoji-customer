@@ -1,6 +1,7 @@
 此项目包含源自既有七钥纪工作台的第三方素材。
 
-assets/hextech、assets/runeterra、assets/voices 中英雄联盟相关名称、图像和配音归其原权利人所有；现有来源记录随对应 assets 目录保留。私有保存不等于获得公开传播、商业使用或再授权权利。
+assets/hextech、assets/runeterra、assets/voices 中英雄联盟相关名称、图像和配音归其原权利人所有；现有来源记录随对应 assets 目录保留。公开可见不等于获得商业使用、再分发或再授权权利。本项目为非官方学习工具，与 Riot Games 无隶属或背书关系。
 论文题录、引文、方法图及衍生教学资料保留原作者归属。机器研读和规则候选不等于人工核实金标。仓库不包含论文 PDF 全文。
 WorkBuddy Cloud SDK 通过其 CDN 引入，遵循原提供方许可和服务条款。
 本次交付不为上述第三方素材新增 MIT 或其他开源许可。
+
