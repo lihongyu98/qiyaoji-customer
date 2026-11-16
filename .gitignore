@@ -1,0 +1,16 @@
+node_modules/
+.env
+.env.*
+!.env.example
+*.log
+*.sqlite*
+*.db
+*.bak
+public/customer-config.local.js
+data/
+backups/
+PDFs/
+*.pdf
+.workbuddy/
+.DS_Store
+Thumbs.db

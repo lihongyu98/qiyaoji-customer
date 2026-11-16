@@ -1,0 +1,20 @@
+:root{--paper:#f5f6f8;--card:#fff;--ink:#182538;--ink2:#334155;--ink3:#64748b;--line:#dce2e9;--accent:#234c68;--gold:#234c68;--goldborder:#cbd5e1;--panel:#eef2f6}
+body{font-family:system-ui,-apple-system,"Microsoft YaHei",sans-serif;background-image:none;line-height:1.65}
+header{background:#fff;border-bottom:1px solid var(--line);box-shadow:0 2px 8px #18253808}
+.card{box-shadow:0 3px 16px #18253806;border-color:var(--line)}
+.btn{min-height:36px;border-radius:6px}.btn:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid #38a0c5;outline-offset:2px}
+html[data-focus="true"] .xpwrap,html[data-focus="true"] #btnAch,html[data-focus="true"] #btnDaily{display:none}
+html[data-focus="true"] *,html[data-focus="true"] *::before,html[data-focus="true"] *::after{animation:none!important;scroll-behavior:auto!important}
+.research-banner{padding:18px 22px;background:#edf4f7;border:1px solid #d1e0e9;border-radius:10px;margin:12px 0 18px}
+.research-banner h2{font-size:21px;color:#234c68;margin:0 0 6px}.research-banner p{color:#536579;max-width:760px}
+.research-actions{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
+.rk-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:18px}
+.rk-source textarea{width:100%;min-height:310px;padding:12px;font:inherit;line-height:1.7;border:1px solid var(--line);border-radius:6px;resize:vertical}
+.rk-card{padding:16px;margin-bottom:12px;border:1px solid var(--line);border-radius:8px;background:#fff}
+.rk-card h3{font-size:16px;display:flex;gap:10px;align-items:center}.rk-card h3 small{font-size:11px;color:#64748b;font-weight:400}
+.rk-card textarea{width:100%;min-height:78px;margin-top:8px;padding:8px;font:inherit;border:1px solid var(--line);border-radius:4px}
+.rk-evidence{display:block;padding:9px;margin-top:8px;background:#f5f7f9;border-left:3px solid #b9cdd9;overflow-wrap:anywhere}
+.rk-evidence input{margin-right:8px}.rk-meta{font-size:12px;color:#64748b}.rk-state{padding:9px 0;color:#285d76}.rk-card select{font:inherit;max-width:100%;margin-top:8px}
+@media(max-width:800px){.rk-layout{grid-template-columns:1fr}.research-banner{padding:14px}.brand small{font-size:10px}}
+
+.rk-detail{margin:14px 0;padding:12px;border:1px solid var(--line);border-radius:8px}.rk-detail summary{cursor:pointer;font-weight:600}.rk-detail label{display:block;margin-top:10px}.rk-detail textarea{min-height:60px}.rk-card>label{display:block;margin-top:12px}

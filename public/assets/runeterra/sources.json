@@ -1,0 +1,14 @@
+{
+  "map": "https://map.leagueoflegends.com/en_US",
+  "terrain": "https://map.leagueoflegends.com/assets/images/tiles/terrain_z1.jpg",
+  "emblems": "https://map.leagueoflegends.com/assets/images/regions/{region}.png",
+  "copyright": "Riot Games",
+  "lore": "https://www.leagueoflegends.com/en-ph/champions/ryze/",
+  "quote_reference": "https://www.9game.cn/yxlmdy/10730009.html",
+  "quotes": [
+    "知识才是真正的武器。",
+    "来吧，符文在召唤。",
+    "也许会失败，但我不会放弃。"
+  ],
+  "note": "中文台词经第三方台词汇编核对；不将自创学习文案或本机合成讲解冒充英雄原声。"
+}

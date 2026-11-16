@@ -1,0 +1,18 @@
+const {JSDOM}=require('jsdom');
+const fs=require('node:fs'),assert=require('node:assert/strict');
+const source=fs.readFileSync('public/customer-shell.js','utf8');
+(async()=>{const dom=new JSDOM('<body></body>',{url:'https://qiyaoji.app.workbuddy.host',runScripts:'outside-only'}),w=dom.window;let inserted=[],callback,saved=0;
+w.setInterval=()=>0;w.setTimeout=fn=>{callback=fn;return 1};w.clearTimeout=()=>{};
+w.HTMLDialogElement.prototype.showModal=function(){this.open=true};w.HTMLDialogElement.prototype.close=function(){this.open=false};
+w.CustomerSession={owner:'alice',user:{id:'alice',email:'alice@example.test'},cloud:{auth:{getSession:async()=>({data:{user:{id:'alice'}}})},database:{from:table=>({insert:async row=>{inserted.push({table,row});return{data:null}}})}}};
+w.G={byPid:{'#1':{title:'Test paper',link:'https://example.test/paper'}}};w.SevenKeysDrafts={putGuided:async()=>{saved++}};w.eval(source);
+const course={shared:{fields:{'靶子':{values:{task:'测试任务'},source_quote:'Evidence',source_location:'§1',source_checked:true}}},roles:{researcher:{depth:{'靶子':'研究问题'}}}};
+await w.SevenKeysDrafts.putGuided('#1',course);assert.equal(saved,1);assert.equal(w.localStorage.getItem('customer-pending'),null,'no consent no upload queue');
+w.document.querySelector('button').click();const checkbox=w.document.querySelector('input[type=checkbox]');checkbox.checked=true;[...w.document.querySelectorAll('button')].find(x=>x.textContent==='保存同步设置').click();await new Promise(r=>setTimeout(r,5));
+await w.SevenKeysDrafts.putGuided('#1',course);await callback();assert.equal(inserted.length,1);assert.equal(inserted[0].table,'ink_entries');assert.equal(inserted[0].row.audit,'pending');assert.equal(inserted[0].row.owner_id,'alice');assert.ok(JSON.parse(inserted[0].row.evidence).consent_at);assert.match(inserted[0].row.value,/研究问题/);
+await w.SevenKeysDrafts.putGuided('#1',course);await callback();assert.equal(inserted.length,1,'same snapshot deduplicated');
+checkbox.checked=false;[...w.document.querySelectorAll('button')].find(x=>x.textContent==='保存同步设置').click();course.shared.fields['靶子'].values.task='暂停后的任务';await w.SevenKeysDrafts.putGuided('#1',course);assert.equal(inserted.length,1,'pause stops collection');
+for(const name of ['workspace.js','guided-study.js','realm.js','expedition.js','voices.js','entrance.js'])assert.ok(fs.existsSync('public/'+name));
+const html=fs.readFileSync('public/index.html','utf8');assert.ok(!html.includes('game_sync.js?v='));assert.ok(html.includes('application/qiyaoji-deferred'));assert.ok(!fs.existsSync('public/server'));
+w.close();console.log('PASS: original page assets, consent gate, automatic save hook, pending-only submission, consent timestamp, role provenance, deduplication, pause, server exclusion.');
+})().catch(e=>{console.error(e);process.exitCode=1});

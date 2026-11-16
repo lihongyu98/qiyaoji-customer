@@ -1,0 +1,2556 @@
+{
+  "schema": 1,
+  "title": "新增20篇 · 综述对照与判断修正",
+  "updated_at": "2026-11-12T10:09:40.702510+08:00",
+  "scope": "本轮新完成20篇：上轮剩余17篇＋新选3篇。上轮已完成的3篇不重复计数；前两批40篇分别保留。综述2篇另列。",
+  "status": "本轮20/20精读记录完成，140项七钥、60处短摘录定位、20道助手自答；只在本地保存。",
+  "papers": [
+    {
+      "id": "r3-02",
+      "name": "stable-worldmodel",
+      "arxiv": "2605.21800",
+      "source": "https://arxiv.org/pdf/2605.21800",
+      "reason": "受控评测与复现基础设施",
+      "year": 2026,
+      "status": "main_and_relevant_appendix_read",
+      "source_batch": "research20-round3",
+      "counting": "本轮新完成，上轮未完成",
+      "read_pages": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        32,
+        33
+      ],
+      "keys": [
+        {
+          "key": "靶子",
+          "text": "统一离线世界模型的训练、规划与域外评测接口。",
+          "pages": [
+            1,
+            2
+          ]
+        },
+        {
+          "key": "坐标",
+          "text": "World/Policy/Solver解耦；PyTorch、Gymnasium和Lance数据通路。支持环境数不等于实测环境数。",
+          "pages": [
+            2,
+            3
+          ]
+        },
+        {
+          "key": "主张",
+          "text": "统一工具降低工程差异，但不能自动消除信息、预算与评测器差异。",
+          "pages": [
+            7,
+            8,
+            9
+          ]
+        },
+        {
+          "key": "机制",
+          "text": "以统一候选求解器调用模型，提供视觉、几何和物理变化测试；Lance改变存储与吞吐。",
+          "pages": [
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "key": "证据",
+          "text": "附录明确CEM30轮×300候选、top30、h5、frameskip5，整段25步开环执行，50步episode；ID50例，误差成功关系256例/条件。",
+          "pages": [
+            7,
+            32,
+            33
+          ]
+        },
+        {
+          "key": "数字",
+          "text": "PushT本地HDF5为1416样本/s、43.12GB，Lance为4815/s、13.31GB，MP4为1331/s、496MB。吞吐受硬件与格式影响。",
+          "pages": [
+            5,
+            6
+          ]
+        },
+        {
+          "key": "边界",
+          "text": "FoV表随机策略OOD基准与主ID表不同；MSE成功/失败重叠只能说明诊断有限，不能证明OOD是唯一原因。离线TD-MPC2差不等于在线算法差。",
+          "pages": [
+            7,
+            8,
+            9
+          ]
+        }
+      ],
+      "anchors": [
+        {
+          "page": 32,
+          "needle": "300"
+        },
+        {
+          "page": 32,
+          "needle": "256"
+        },
+        {
+          "page": 5,
+          "needle": "Lance"
+        }
+      ],
+      "quiz": {
+        "question": "统一接口等于公平比较吗？",
+        "answer": "不等于，还需匹配动作和目标信息、候选预算、执行步数与成功判定。",
+        "self_check": "对照原文页码、信息接口、控制通路、预算与证据边界；未执行作者模型。"
+      },
+      "reflection": "先审计协议，再比较表中胜负。",
+      "next_experiment": "冻结同一数据切分与候选，逐一替换模型和求解器。",
+      "venue": "原文版本所示；未据预印本模板推断主会录取",
+      "code_status": "仅记录原文代码声明；未安装或运行作者模型。",
+      "author_type": "assistant",
+      "source_sha256": "d9b1ea1261c7aea9f0a382c1992073b62e6f713553533557a24b71f3b498b666",
+      "page_count": 36,
+      "read_scope": "主文及read_pages明确列出的相关附录；其余附录不计已读。未运行作者模型。"
+    },
+    {
+      "id": "r3-03",
+      "name": "TaskSense",
+      "arxiv": "2608.06544v1",
+      "source": "https://arxiv.org/pdf/2608.06544v1",
+      "reason": "任务相关视觉注意",
+      "year": 2026,
+      "status": "main_and_relevant_appendix_read",
+      "source_batch": "research20-round3",
+      "counting": "本轮新完成，上轮未完成",
+      "read_pages": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "keys": [
+        {
+          "key": "靶子",
+          "text": "把任务相关性约束提前到视觉编码前，减少Dreamer重建背景的负担。",
+          "pages": [
+            1,
+            2
+          ]
+        },
+        {
+          "key": "坐标",
+          "text": "DreamerV3的观察接口改动，保留RSSM和actor-critic想象训练；不等于语言指定新任务。",
+          "pages": [
+            3,
+            5
+          ]
+        },
+        {
+          "key": "主张",
+          "text": "有干扰时回报较高，但“干净任务匹配基线”不能掩盖表格中的明显代价。",
+          "pages": [
+            6
+          ]
+        },
+        {
+          "key": "机制",
+          "text": "前一潜状态stop-gradient→8×8 BinaryConcrete掩码，训练随机温度1、推理均值；遮后图加掩码通道，差分特征逆动作损失，掩码条件重建和稀疏损失。",
+          "pages": [
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "key": "证据",
+          "text": "6任务5seed、500k环境步，每10k评10×1000步；DCS改成每步独立DAVIS背景，非原版时序干扰。只主比较DreamerV3，消融2任务。",
+          "pages": [
+            5,
+            6,
+            7
+          ]
+        },
+        {
+          "key": "数字",
+          "text": "干净均值708.4对777.3；Walker Run474.0对723.9；干扰均值490.2对397.03，Hopper仍1.9对0.7近失败。作者报告单A6000约4.5小时，不是本轮实测。",
+          "pages": [
+            5,
+            6
+          ]
+        },
+        {
+          "key": "边界",
+          "text": "动作预测相关与长期任务相关被假设等同，正文明确承认局限。掩码由前状态生成并作为输入，可能携带行为策略信息；尚无mask-only/shuffle等排除，不能说已证明旁路。主表没有区间，消融图有SD；删除像素解码器不会必然丢失潜想象能力，LeWM已反例。",
+          "pages": [
+            1,
+            4,
+            6,
+            7
+          ]
+        }
+      ],
+      "anchors": [
+        {
+          "page": 5,
+          "needle": "five random seeds"
+        },
+        {
+          "page": 6,
+          "needle": "708.4"
+        },
+        {
+          "page": 7,
+          "needle": "long-term"
+        }
+      ],
+      "quiz": {
+        "question": "动作预测准确、注意力图好看，是否证明抓到了长期任务因果信息？",
+        "answer": "不能。动作由行为策略产生，掩码自身也可传行为相关信息；需要mask-only、状态/动作置乱、换行为策略和长期奖励对照。表格还显示干扰收益与干净代价并存。",
+        "self_check": "核对正文、表格、读出与控制、额外监督和预算；建议实验未执行。"
+      },
+      "reflection": "现在先核对信息通路和行为策略，再解释注意力；动作可恢复性不等于任务充分性。",
+      "next_experiment": "匹配Dreamer参数/预算，加入掩码单独输入、掩码跨轨迹置乱、无图仅历史控制；检验罕见可观测对象变为任务相关时的响应。",
+      "venue": "arXiv预印本；本轮未核实主会录取",
+      "code_status": "未在原文可见主文中核实完整作者实现。",
+      "author_type": "assistant",
+      "source_sha256": "253dd0af6f9dc5992178e881445fc80d6ba93e617778fe83eacc50fc6bba5fee",
+      "page_count": 9,
+      "read_scope": "主文及read_pages明确列出的相关附录；其余附录不计已读。未运行作者模型。"
+    },
+    {
+      "id": "r3-05",
+      "name": "Delta-JEPA",
+      "arxiv": "2606.31232",
+      "source": "https://arxiv.org/pdf/2606.31232",
+      "reason": "动作敏感表征",
+      "year": 2026,
+      "status": "main_and_relevant_appendix_read",
+      "source_batch": "research20-round3",
+      "counting": "本轮新完成，上轮未完成",
+      "read_pages": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        10,
+        11
+      ],
+      "keys": [
+        {
+          "key": "靶子",
+          "text": "让无需重建的JEPA表征对不同动作产生可区分变化。",
+          "pages": [
+            1,
+            2
+          ]
+        },
+        {
+          "key": "坐标",
+          "text": "LeWM式离线无奖励视觉规划，额外动作标注沿用轨迹；用逆动作替代分布匹配正则。",
+          "pages": [
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "key": "主张",
+          "text": "潜差分解码比端点拼接在4任务均值更好，但不保证任意动作都能由端点唯一恢复。",
+          "pages": [
+            5,
+            6
+          ]
+        },
+        {
+          "key": "机制",
+          "text": "共享encoder得到两端潜变量，差分输入3层Transformer，5个可学查询解码跨间隔动作；预测MSE+加权动作MSE，无SIGReg/EMA。",
+          "pages": [
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "key": "证据",
+          "text": "全部基线从零50epoch；50验证轨迹、500测试轨迹、3seed。固定512历史变动作观察预测响应；物理与差分探针按轨迹分割20k样本。不是全观测动作反事实闭环保证。",
+          "pages": [
+            5,
+            7
+          ]
+        },
+        {
+          "key": "数字",
+          "text": "PushT89.07±1.90对LeWM84.53±1.50；端点拼接76.47±2.08；Cube79.27±1.81对64.13±1.89。Reacher收益1.46pp较小。PushT物体位置线性探针0.929低于LeWM0.979。",
+          "pages": [
+            5,
+            6,
+            11
+          ]
+        },
+        {
+          "key": "边界",
+          "text": "动作→端点多对一时多步逆动作目标有歧义；去拼接不等于排除所有动作相关捷径。动作敏感PCA不是物理正确性证据，表征尺度不同也妨碍直接比较潜位移大小。没有实机、未验证稀有交互。",
+          "pages": [
+            3,
+            4,
+            6,
+            7,
+            8
+          ]
+        }
+      ],
+      "anchors": [
+        {
+          "page": 5,
+          "needle": "50 epochs"
+        },
+        {
+          "page": 6,
+          "needle": "+12.60"
+        },
+        {
+          "page": 11,
+          "needle": "0.929"
+        }
+      ],
+      "quiz": {
+        "question": "相同端点可能由不同动作序列到达，对逆动作监督意味着什么？",
+        "answer": "不能唯一恢复，MSE可能学条件均值或利用额外偶然线索。应该区分行为可预测性与物理后果充分性，并增加等结果动作、接触死区和历史条件的检查。",
+        "self_check": "核对正文、表格、读出与控制、额外监督和预算；建议实验未执行。"
+      },
+      "reflection": "不能把再加差分逆动力学当新方法；它与PSG的物理状态变化目标存在需要受控比较的目标取舍。",
+      "next_experiment": "构造相同起终点而动作不同的成对轨迹，比较拼接/差分逆动作、净状态变化和无辅助目标；固定数据与解码器容量。",
+      "venue": "arXiv预印本；本轮未核实主会录取",
+      "code_status": "正文未核实可运行代码仓库。",
+      "author_type": "assistant",
+      "source_sha256": "94e394fd9cbffaffb370fdc5f4bb3e2a2833ca41966e02efe800d5afff30371e",
+      "page_count": 13,
+      "read_scope": "主文及read_pages明确列出的相关附录；其余附录不计已读。未运行作者模型。"
+    },
+    {
+      "id": "r3-06",
+      "name": "Sub-JEPA",
+      "arxiv": "2605.09241v1",
+      "source": "https://arxiv.org/pdf/2605.09241v1",
+      "reason": "低成本正则化改动",
+      "year": 2026,
+      "status": "main_and_relevant_appendix_read",
+      "source_batch": "research20-round3",
+      "counting": "本轮新完成，上轮未完成",
+      "read_pages": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "keys": [
+        {
+          "key": "靶子",
+          "text": "高维各向同性高斯先验可能不适配低维控制状态。",
+          "pages": [
+            1,
+            2
+          ]
+        },
+        {
+          "key": "坐标",
+          "text": "LeWM正则化改动；原始像素端到端，无奖励、无预训练。",
+          "pages": [
+            2,
+            3
+          ]
+        },
+        {
+          "key": "主张",
+          "text": "固定随机子空间上做高斯正则，4任务均值改善；降低有效秩与收益相关，未建立因果。",
+          "pages": [
+            4,
+            5
+          ]
+        },
+        {
+          "key": "机制",
+          "text": "192维潜变量投到K个冻结QR行正交子空间，ds约192/K，每子空间再做随机一维正态统计。K32默认，PushT K16，验证集选择。",
+          "pages": [
+            3,
+            4
+          ]
+        },
+        {
+          "key": "证据",
+          "text": "LeWM/Sub同设置6seed；PLDM、DINO结果取自LeWM，非重训。有效秩只2000观测、4环境相关；UMAP和解码为定性补充。",
+          "pages": [
+            4,
+            5,
+            7,
+            8
+          ]
+        },
+        {
+          "key": "数字",
+          "text": "TwoRoom84.33→95.00%，Cube67.33→76.33%；PushT K16为89%，K32降28%、K64降9%，不是划得越细越好。",
+          "pages": [
+            5
+          ]
+        },
+        {
+          "key": "边界",
+          "text": "行正交只保子空间内性质，降维不保所有原空间距离；不同随机子空间不保证彼此无冗余或独立。有限视图正态约束不证明真实物理流形恢复。干预目标未变、无任务切换证据。",
+          "pages": [
+            3,
+            4,
+            5,
+            6
+          ]
+        }
+      ],
+      "anchors": [
+        {
+          "page": 4,
+          "needle": "six random seeds"
+        },
+        {
+          "page": 5,
+          "needle": "28.00"
+        },
+        {
+          "page": 6,
+          "needle": "co-adaptation"
+        }
+      ],
+      "quiz": {
+        "question": "有效秩变小同时成功率变高，能否断言压缩导致提升？",
+        "answer": "不能。K同时改变正则强度、方向覆盖和优化；至少需要等正则强度、等投影数及独立秩干预。PushT过细子空间反而崩溃。",
+        "self_check": "核对正文、表格、读出与控制、额外监督和预算；建议实验未执行。"
+      },
+      "reflection": "形状统计和几何图不能代替决策证据；简单正则方向已经拥挤。",
+      "next_experiment": "配平总一维投影数、损失强度、更新/FLOPs，检验K与维度独立作用；任务相关细节转变时测是否更易丢失。",
+      "venue": "arXiv预印本；本轮未核实主会录取",
+      "code_status": "论文提供代码链接，本轮未安装或运行，兼容性未验证。",
+      "author_type": "assistant",
+      "source_sha256": "f88624aa985b9303ddce94a03f8d8bba22f535508e695a3b1b6256c4e7fcc8f6",
+      "page_count": 10,
+      "read_scope": "主文及read_pages明确列出的相关附录；其余附录不计已读。未运行作者模型。"
+    },
+    {
+      "id": "r3-07",
+      "name": "INTACT",
+      "arxiv": "2607.26056",
+      "source": "https://arxiv.org/pdf/2607.26056",
+      "reason": "意图到动作与无搜索控制",
+      "year": 2026,
+      "status": "main_and_relevant_appendix_read",
+      "source_batch": "research20-round3",
+      "counting": "本轮新完成，上轮未完成",
+      "read_pages": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        25
+      ],
+      "keys": [
+        {
+          "key": "靶子",
+          "text": "让JEPA潜变量支持直接动作读出，减少昂贵搜索。",
+          "pages": [
+            1,
+            2
+          ]
+        },
+        {
+          "key": "坐标",
+          "text": "离线演示、图像目标、模拟四任务；局部实现意图与部署目标意图不同。",
+          "pages": [
+            3,
+            4
+          ]
+        },
+        {
+          "key": "主张",
+          "text": "INTACT直接读出和小预算保护搜索有效；不代表潜动力学单独承担全部收益。",
+          "pages": [
+            10,
+            11,
+            12
+          ]
+        },
+        {
+          "key": "机制",
+          "text": "用后继潜差分训练条件高斯动作分布；部署以目标差分驱动动作头，同时前向预测器生成后续计划块，执行首个5步块再编码。",
+          "pages": [
+            4,
+            5,
+            6
+          ]
+        },
+        {
+          "key": "证据",
+          "text": "单任务1epoch、3训练seed；共享encoder使用任务专属动力学/动作头。actor-off仍含预测器和CEM，不能称纯encoder测试。",
+          "pages": [
+            9,
+            10,
+            11,
+            12
+          ]
+        },
+        {
+          "key": "数字",
+          "text": "Direct均值95.33%，Guarded96.86%，纯CEM80.86%；共享E5 Direct89.39%，actor-off70.08%。Reacher官方与CLEAR Moderate为97.67%与49.56%，协议不可混合。",
+          "pages": [
+            10,
+            11,
+            12,
+            25
+          ]
+        },
+        {
+          "key": "边界",
+          "text": "同构是类型化共享计算图/动作律商空间的受限定义，不是任意OOD物理共轭；仅模拟、已知目标、演示支持，单高斯可落在多模态之间。作者CLEAR结果未在本轮独立复现。",
+          "pages": [
+            6,
+            7,
+            15
+          ]
+        }
+      ],
+      "anchors": [
+        {
+          "page": 10,
+          "needle": "95.33"
+        },
+        {
+          "page": 11,
+          "needle": "49.56"
+        },
+        {
+          "page": 15,
+          "needle": "Limitations"
+        }
+      ],
+      "quiz": {
+        "question": "不搜索等于不使用前向模型吗？",
+        "answer": "不是。Direct仍用前向预测器构造后续动作块；需分别消融编码、预测和动作读出。",
+        "self_check": "对照原文页码、信息接口、控制通路、预算与证据边界；未执行作者模型。"
+      },
+      "reflection": "将“控制更好”与“世界预测更好”拆开。",
+      "next_experiment": "固定checkpoint与重规划节奏，比较目标IDM、INTACT和CEM，并检查角度周期。",
+      "venue": "原文版本所示；未据预印本模板推断主会录取",
+      "code_status": "仅记录原文代码声明；未安装或运行作者模型。",
+      "author_type": "assistant",
+      "source_sha256": "ef8c160ebdafb6415954cd00b5c0d3369d84981234c12287364adba20e6b0fe9",
+      "page_count": 28,
+      "read_scope": "主文及read_pages明确列出的相关附录；其余附录不计已读。未运行作者模型。"
+    },
+    {
+      "id": "r3-09",
+      "name": "JEPA-Bisim",
+      "arxiv": "2602.18639v2",
+      "source": "https://arxiv.org/pdf/2602.18639v2",
+      "reason": "动作后果等价与视觉干扰",
+      "year": 2026,
+      "status": "main_and_relevant_appendix_read",
+      "source_batch": "research20-round3",
+      "counting": "本轮新完成，上轮未完成",
+      "read_pages": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        20,
+        21,
+        28,
+        29
+      ],
+      "keys": [
+        {
+          "key": "靶子",
+          "text": "压缩冻结视觉特征，减轻无关背景造成的规划脆弱性。",
+          "pages": [
+            1,
+            2
+          ]
+        },
+        {
+          "key": "坐标",
+          "text": "冻结DINOv2/SimiBOT的196×384 patch经MLP压到196×32，并非抛弃空间patch。",
+          "pages": [
+            3,
+            4
+          ]
+        },
+        {
+          "key": "主张",
+          "text": "奖励自由双模拟式几何在两环境中减少视觉扰动退化，但受动作采样和正则假设限制。",
+          "pages": [
+            6,
+            7,
+            8
+          ]
+        },
+        {
+          "key": "机制",
+          "text": "转移距离目标、PCA-VC防塌缩和潜空间规划；配对动作独立来自replay，并非精确最优Wasserstein耦合。",
+          "pages": [
+            4,
+            5,
+            20
+          ]
+        },
+        {
+          "key": "证据",
+          "text": "PointMaze和PushT；移动点不会碰撞或影响agent。主要比较不同干扰下的规划，不证明强交互场景。",
+          "pages": [
+            6,
+            7,
+            8
+          ]
+        },
+        {
+          "key": "数字",
+          "text": "PointMaze无干扰DINO .80、方法.78；相对平均退化21.5%与-3.1%。负退化表示改善，不是负成功率。PushT相对退化47.6%与7.8%。",
+          "pages": [
+            11,
+            12
+          ]
+        },
+        {
+          "key": "边界",
+          "text": "定理3.1主式未保留epsilon项，附录推导先出现4Hw epsilon，随后用epsilon≤潜距离吸收；需补条件或保留误差项，特别是潜距离为0时。正文/附录PCA训练阶段描述也应核代码。",
+          "pages": [
+            9,
+            20,
+            29
+          ]
+        }
+      ],
+      "anchors": [
+        {
+          "page": 11,
+          "needle": "21.5"
+        },
+        {
+          "page": 9,
+          "needle": "Theorem 3.1"
+        },
+        {
+          "page": 29,
+          "needle": "Proof"
+        }
+      ],
+      "quiz": {
+        "question": "潜距离为零是否直接保证近似抽象误差为零？",
+        "answer": "不能。近似误差项不能在没有额外条件时随距离一起消失，需逐步核定理假设与证明。",
+        "self_check": "对照原文页码、信息接口、控制通路、预算与证据边界；未执行作者模型。"
+      },
+      "reflection": "对形式保证检查残余项，不把定理名当证据。",
+      "next_experiment": "在交互背景和任务相关布局下测试，并保留epsilon项做有限状态反例。",
+      "venue": "原文版本所示；未据预印本模板推断主会录取",
+      "code_status": "仅记录原文代码声明；未安装或运行作者模型。",
+      "author_type": "assistant",
+      "source_sha256": "b57e1db580b54cd317bac6803c7d6b8e4c5c66a5917e10365cb4f7209711ba7e",
+      "page_count": 29,
+      "read_scope": "主文及read_pages明确列出的相关附录；其余附录不计已读。未运行作者模型。"
+    },
+    {
+      "id": "r3-10",
+      "name": "D-JEPA",
+      "arxiv": "2609.24749v1",
+      "source": "https://arxiv.org/pdf/2609.24749v1",
+      "reason": "直接查新：候选排序和决策对齐",
+      "year": 2026,
+      "status": "main_and_relevant_appendix_read",
+      "source_batch": "research20-round3",
+      "counting": "本轮新完成，上轮未完成",
+      "read_pages": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        12,
+        13,
+        14,
+        15,
+        25,
+        26
+      ],
+      "keys": [
+        {
+          "key": "靶子",
+          "text": "让有限候选轨迹的排序更符合实际成功，而非仅减小平均预测误差。",
+          "pages": [
+            1,
+            2
+          ]
+        },
+        {
+          "key": "坐标",
+          "text": "恢复相同起点，对同一候选池实际执行，形成反事实成败监督。",
+          "pages": [
+            3,
+            4
+          ]
+        },
+        {
+          "key": "主张",
+          "text": "决策相关的潜几何可改善候选选择，但目标相对的排序写回不等于物理预测改善。",
+          "pages": [
+            5,
+            6
+          ]
+        },
+        {
+          "key": "机制",
+          "text": "融合全局排序、top16局部排序与受限低秩修正；再以候选秩定义朝目标单位方向的半径，使终点MSE与秩严格单调。",
+          "pages": [
+            4,
+            5,
+            6
+          ]
+        },
+        {
+          "key": "证据",
+          "text": "训练/校准/测试ID分离；主要cohort筛选混合成败且原生分差小，属于决策边界条件评测。外观改变含任务内重训。",
+          "pages": [
+            12,
+            13,
+            14,
+            15
+          ]
+        },
+        {
+          "key": "数字",
+          "text": "256例PushT为87.89%对LeWM83.59%；128机制cohort几何扩展与融合都99.22%。物理配对100例64→81，22得5失；不是全硬件普适结论。",
+          "pages": [
+            7,
+            8,
+            9
+          ]
+        },
+        {
+          "key": "边界",
+          "text": "100%排序一致部分由构造保证；末端表示依赖目标与候选集合，不能作为公共物理几何证据。驾驶PDMS也不等于成功率；额外真实成败监督应计成本。",
+          "pages": [
+            6,
+            9,
+            10,
+            25,
+            26
+          ]
+        }
+      ],
+      "anchors": [
+        {
+          "page": 7,
+          "needle": "87.89"
+        },
+        {
+          "page": 12,
+          "needle": "cohort"
+        },
+        {
+          "page": 25,
+          "needle": "Proposition"
+        }
+      ],
+      "quiz": {
+        "question": "排序写回后MSE完美选优证明理解物理了吗？",
+        "answer": "不证明。半径本来按候选秩构造；应另测跨目标、跨候选与公共状态预测，且不使用测试成败监督。",
+        "self_check": "对照原文页码、信息接口、控制通路、预算与证据边界；未执行作者模型。"
+      },
+      "reflection": "区别用于决策的分数编码与可迁移动力学表示。",
+      "next_experiment": "固定候选和监督预算，增加跨目标迁移及真实状态误差。",
+      "venue": "原文版本所示；未据预印本模板推断主会录取",
+      "code_status": "仅记录原文代码声明；未安装或运行作者模型。",
+      "author_type": "assistant",
+      "source_sha256": "b31912b74fa18707be69a921941de3b5ef7a43cb2d00fd18deca45df69ad7aa5",
+      "page_count": 26,
+      "read_scope": "主文及read_pages明确列出的相关附录；其余附录不计已读。未运行作者模型。"
+    },
+    {
+      "id": "r3-11",
+      "name": "Representation World Model",
+      "arxiv": "2609.29171v1",
+      "source": "https://arxiv.org/pdf/2609.29171v1",
+      "reason": "逆动力学与可执行潜路径",
+      "year": 2026,
+      "status": "main_and_relevant_appendix_read",
+      "source_batch": "research20-round3",
+      "counting": "本轮新完成，上轮未完成",
+      "read_pages": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ],
+      "keys": [
+        {
+          "key": "靶子",
+          "text": "以可直接动作解码的潜几何替代显式搜索式前向模型。",
+          "pages": [
+            1,
+            2
+          ]
+        },
+        {
+          "key": "坐标",
+          "text": "图像目标四任务与LIBERO是不同信息接口和架构。",
+          "pages": [
+            3,
+            7,
+            8
+          ]
+        },
+        {
+          "key": "主张",
+          "text": "线性潜路径配合IDM可取得高控制成绩，但很依赖反馈频率。",
+          "pages": [
+            7,
+            8,
+            9
+          ]
+        },
+        {
+          "key": "机制",
+          "text": "端点编码后线性插值，以相邻插值潜变量训练局部逆动作；可加真实相邻对和中间latent对齐。",
+          "pages": [
+            3,
+            4
+          ]
+        },
+        {
+          "key": "证据",
+          "text": "10epoch、ViT Tiny、样本级90/10切分，非episode隔离；作者配置8张RTX5090，不等于已证单卡快速复现。LIBERO加入delta预测器、proprio与taskID。",
+          "pages": [
+            12,
+            13,
+            14,
+            15,
+            16,
+            17
+          ]
+        },
+        {
+          "key": "数字",
+          "text": "主表均值98.25%；重规划h5为98.33%，h25为69.17%，PushT95.67→26%。LIBERO93%与RC-aux81.2%等需核协议。",
+          "pages": [
+            7,
+            8,
+            9,
+            13
+          ]
+        },
+        {
+          "key": "边界",
+          "text": "插值几何不是天然可执行；与25步CEM对比不能全归因于表示。LIBERO不能沿用“完全无前向预测器”的说法；样本切分有轨迹关联风险。",
+          "pages": [
+            8,
+            9,
+            12,
+            13,
+            17
+          ]
+        }
+      ],
+      "anchors": [
+        {
+          "page": 9,
+          "needle": "69.17"
+        },
+        {
+          "page": 13,
+          "needle": "5090"
+        },
+        {
+          "page": 7,
+          "needle": "LIBERO"
+        }
+      ],
+      "quiz": {
+        "question": "提高重规划频率算世界模型变好吗？",
+        "answer": "未必。先匹配反馈频率与延迟，再用预测和编码消融分解收益。",
+        "self_check": "对照原文页码、信息接口、控制通路、预算与证据边界；未执行作者模型。"
+      },
+      "reflection": "协议变动可以大于方法改动，必须优先控制。",
+      "next_experiment": "固定5/25步执行交叉矩阵，episode隔离训练验证。",
+      "venue": "原文版本所示；未据预印本模板推断主会录取",
+      "code_status": "仅记录原文代码声明；未安装或运行作者模型。",
+      "author_type": "assistant",
+      "source_sha256": "e35478cc6e5270d7e69b75733988eef94b70727ebc80ac06fba3eb4a343930df",
+      "page_count": 17,
+      "read_scope": "主文及read_pages明确列出的相关附录；其余附录不计已读。未运行作者模型。"
+    },
+    {
+      "id": "r3-12",
+      "name": "Fast LeWorldModel",
+      "arxiv": "2606.26217v2",
+      "source": "https://arxiv.org/pdf/2606.26217v2",
+      "reason": "多步动作前缀与效率",
+      "year": 2026,
+      "status": "main_and_relevant_appendix_read",
+      "source_batch": "research20-round3",
+      "counting": "本轮新完成，上轮未完成",
+      "read_pages": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        13,
+        14
+      ],
+      "keys": [
+        {
+          "key": "靶子",
+          "text": "减少逐步潜展开的串行开销与误差传递。",
+          "pages": [
+            1,
+            2
+          ]
+        },
+        {
+          "key": "坐标",
+          "text": "LeWM图像目标CEM；改动力学查询接口而非直接生成策略。",
+          "pages": [
+            3,
+            4
+          ]
+        },
+        {
+          "key": "主张",
+          "text": "当前锚点加动作前缀并行预测多个时间点，特定预算下改善精度和累计规划成本。",
+          "pages": [
+            5,
+            6,
+            7
+          ]
+        },
+        {
+          "key": "机制",
+          "text": "因果动作Transformer接收状态首token，前缀tokens调制AdaLN残差MLP，每时距都有潜目标监督，保留SIGReg；可加直接/分段预测一致性惩罚。",
+          "pages": [
+            5,
+            6,
+            13,
+            14
+          ]
+        },
+        {
+          "key": "证据",
+          "text": "4仿真任务、主表沿用单seed，附录7seed；10epoch，Cube batch32，其他128；17.9M对LeWM18M。50环境步用两个5潜步块串联，仍有跨块误差。",
+          "pages": [
+            7,
+            13
+          ]
+        },
+        {
+          "key": "数字",
+          "text": "主表85.8→90.5%，7seed81.2→85.7%；一致性92.0%但总CEM25.7s而基础16.1s，LeWM33.7s。所有这些秒数是整个评测工作量累计，不是每次规划延迟，且不含环境步进/渲染。",
+          "pages": [
+            7,
+            13,
+            14
+          ]
+        },
+        {
+          "key": "边界",
+          "text": "潜MSE在各自编码空间，不等同公共物理误差；一致性可同时一致地错。更长时间仍受CEM搜索与分块外推限制；不能把累计耗时与LeWM每调用0.98s直接比较。",
+          "pages": [
+            6,
+            7,
+            9,
+            10,
+            14
+          ]
+        }
+      ],
+      "anchors": [
+        {
+          "page": 14,
+          "needle": "rather than an average per planning call"
+        },
+        {
+          "page": 13,
+          "needle": "seven random seeds"
+        },
+        {
+          "page": 6,
+          "needle": "does not directly measure"
+        }
+      ],
+      "quiz": {
+        "question": "论文16.1秒与另篇0.98秒，能直接判定哪种更慢吗？",
+        "answer": "不能。Fast-LeWM附录明确是整个评测的累计成本，另一篇是平均每调用。还要对齐硬件、候选预算、动作重规划周期及是否计入渲染。",
+        "self_check": "核对正文、表格、读出与控制、额外监督和预算；建议实验未执行。"
+      },
+      "reflection": "阅读增加后最具体的纠错：计时分母必须检查，不能只抄speedup。",
+      "next_experiment": "固定同机、checkpoint/候选流，报告每调用中位/P95、每环境步摊销和总成本；直接预测与分段预测用公共物理后果误差比较。",
+      "venue": "arXiv预印本；本轮未核实主会录取",
+      "code_status": "论文提供代码链接，本轮未安装或运行，兼容性未验证。",
+      "author_type": "assistant",
+      "source_sha256": "b76f1377d9c13fe8daba579367799ca0788b50ec3e89536a23c820405cfe5863",
+      "page_count": 14,
+      "read_scope": "主文及read_pages明确列出的相关附录；其余附录不计已读。未运行作者模型。"
+    },
+    {
+      "id": "r3-13",
+      "name": "PLDM",
+      "arxiv": "2502.14819",
+      "source": "https://arxiv.org/pdf/2502.14819",
+      "reason": "离线无奖励规划和数据覆盖",
+      "year": 2025,
+      "status": "main_and_relevant_appendix_read",
+      "source_batch": "research20-round3",
+      "counting": "本轮新完成，上轮未完成",
+      "read_pages": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        17,
+        18,
+        19,
+        20,
+        21
+      ],
+      "keys": [
+        {
+          "key": "靶子",
+          "text": "从离线交互学习潜动力学，支持导航新布局和新目标组合。",
+          "pages": [
+            1,
+            2
+          ]
+        },
+        {
+          "key": "坐标",
+          "text": "PLDM导航研究，原文标NeurIPS2025；不是四任务LeWM后续复刻协议。",
+          "pages": [
+            1,
+            3
+          ]
+        },
+        {
+          "key": "主张",
+          "text": "多类偏移有优势，但数据拼接条件下并非总胜离线RL。",
+          "pages": [
+            5,
+            6
+          ]
+        },
+        {
+          "key": "机制",
+          "text": "VICReg方差协方差、时间平滑和IDM；自回归ensemble用MPPI规划，可加不确定性代价。",
+          "pages": [
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "key": "证据",
+          "text": "23数据集6方法；TwoRooms二维位移无惯性，DiverseMaze RGB加速度状态中的速度信息（velocity），Ant为29维状态。3seed主图误差为SE。",
+          "pages": [
+            5,
+            17,
+            18,
+            19
+          ]
+        },
+        {
+          "key": "数字",
+          "text": "无门轨迹TwoRooms：PLDM34.4±2.7%，GCIQL99.6%、HILP100%。去IDM在TwoRooms仍98%，DiverseMaze98.7→75.5%。",
+          "pages": [
+            5,
+            20
+          ]
+        },
+        {
+          "key": "边界",
+          "text": "追逐/逃避切换给定追逐者状态作为目标接口，不等于学会新交互物理。域、信息和数据质量决定优势；原始MPPI与后续CEM实现不可混叫原版。",
+          "pages": [
+            7,
+            8,
+            20,
+            21
+          ]
+        }
+      ],
+      "anchors": [
+        {
+          "page": 5,
+          "needle": "34.4"
+        },
+        {
+          "page": 5,
+          "needle": "MPPI"
+        },
+        {
+          "page": 20,
+          "needle": "75.5"
+        }
+      ],
+      "quiz": {
+        "question": "预测模型天然更擅长离线拼接吗？",
+        "answer": "不天然。无门轨迹反例显示离线价值方法远高于PLDM；必须按数据覆盖分析。",
+        "self_check": "对照原文页码、信息接口、控制通路、预算与证据边界；未执行作者模型。"
+      },
+      "reflection": "保留不支持主线的反例，防止只搜支持证据。",
+      "next_experiment": "在缺失关键转移和布局偏移两种数据下分别比较。",
+      "venue": "原文版本所示；未据预印本模板推断主会录取",
+      "code_status": "仅记录原文代码声明；未安装或运行作者模型。",
+      "author_type": "assistant",
+      "source_sha256": "5491927bbbc966953cfa17ff24e1208349c8e344921aa0dad2363b16d8456ccf",
+      "page_count": 30,
+      "read_scope": "主文及read_pages明确列出的相关附录；其余附录不计已读。未运行作者模型。"
+    },
+    {
+      "id": "r3-14",
+      "name": "Learning Task Informed Abstractions",
+      "arxiv": "2106.15612",
+      "source": "https://arxiv.org/pdf/2106.15612",
+      "reason": "奖励相关抽象的经典先例",
+      "year": 2021,
+      "status": "main_and_relevant_appendix_read",
+      "source_batch": "research20-round3",
+      "counting": "本轮新完成，上轮未完成",
+      "read_pages": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        13,
+        14,
+        15
+      ],
+      "keys": [
+        {
+          "key": "靶子",
+          "text": "在奖励驱动控制中区分任务因子与视觉干扰，减少重建浪费。",
+          "pages": [
+            1,
+            2
+          ]
+        },
+        {
+          "key": "坐标",
+          "text": "ICML2021时期先例；双RSSM与想象actor-critic，不是JEPA。",
+          "pages": [
+            1,
+            3
+          ]
+        },
+        {
+          "key": "主张",
+          "text": "任务/干扰分解能缓解背景偏移，但假设与适应限制明确。",
+          "pages": [
+            3,
+            7,
+            8
+          ]
+        },
+        {
+          "key": "机制",
+          "text": "两分支协作掩码重建，干扰支对抗奖励预测，task支驱动策略；独立因子动力学仍可各自依赖动作。",
+          "pages": [
+            3,
+            4
+          ]
+        },
+        {
+          "key": "证据",
+          "text": "ManyWorld关闭碰撞但保留遮挡，不能据讨论声称已验证强碰撞；DMC5seed，Atari额外12M干扰容量应计入。",
+          "pages": [
+            5,
+            6,
+            7,
+            13
+          ]
+        },
+        {
+          "key": "数字",
+          "text": "附录DMC显著性：Hopper p.014、Walker .052、Cheetah .061；不能称所有任务显著。部分Atari每seed约10天V100，不是轻量起步。",
+          "pages": [
+            13,
+            14,
+            15
+          ]
+        },
+        {
+          "key": "边界",
+          "text": "正文已讨论发生碰撞时干扰变得相关，故“外源因素变有用”不是本轮新发现；无测试时任务相关性适应，随机噪声→自然视频转移失败。",
+          "pages": [
+            8
+          ]
+        }
+      ],
+      "anchors": [
+        {
+          "page": 13,
+          "needle": "0.052"
+        },
+        {
+          "page": 8,
+          "needle": "adapt"
+        },
+        {
+          "page": 8,
+          "needle": "collision"
+        }
+      ],
+      "quiz": {
+        "question": "将背景突然变为碰撞物是全新问题吗？",
+        "answer": "不是，2021论文已讨论交互会改变相关性；新贡献必须更具体且对照已有方法。",
+        "self_check": "对照原文页码、信息接口、控制通路、预算与证据边界；未执行作者模型。"
+      },
+      "reflection": "查新需要回到经典先例，而非只读今年论文。",
+      "next_experiment": "明确训练/测试相关性切换、可观测提示和适应预算，再查对应先例。",
+      "venue": "原文版本所示；未据预印本模板推断主会录取",
+      "code_status": "仅记录原文代码声明；未安装或运行作者模型。",
+      "author_type": "assistant",
+      "source_sha256": "c4119704136e9385e266b91aa72c72d4ef63cc7218f13a055b0a68bbc8b732bb",
+      "page_count": 17,
+      "read_scope": "主文及read_pages明确列出的相关附录；其余附录不计已读。未运行作者模型。"
+    },
+    {
+      "id": "r3-15",
+      "name": "Denoised MDPs",
+      "arxiv": "2206.15477",
+      "source": "https://arxiv.org/pdf/2206.15477",
+      "reason": "可控性与奖励相关性四分法",
+      "year": 2022,
+      "status": "main_and_relevant_appendix_read",
+      "source_batch": "research20-round3",
+      "counting": "本轮新完成，上轮未完成",
+      "read_pages": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        13,
+        14
+      ],
+      "keys": [
+        {
+          "key": "靶子",
+          "text": "分离可控、奖励相关与无关因素，使潜模型保留决策信息。",
+          "pages": [
+            1,
+            2
+          ]
+        },
+        {
+          "key": "坐标",
+          "text": "Denoised MDPs四类因子思想；外源因素也可以奖励相关。",
+          "pages": [
+            2,
+            3
+          ]
+        },
+        {
+          "key": "主张",
+          "text": "不能把不可控等同无用；有用因子应按控制目标和依赖结构判断。",
+          "pages": [
+            2,
+            3
+          ]
+        },
+        {
+          "key": "机制",
+          "text": "变分似然与最小信息保留，通过不同KL权重训练x/y/z；实验多数用无z的简化结构，完整结构更慢且更差。",
+          "pages": [
+            4,
+            5,
+            6
+          ]
+        },
+        {
+          "key": "证据",
+          "text": "5次运行SD，3DMC×4噪声及RoboDesk；视频+传感器奖励不处处精确可加，附录依赖局部线性近似。",
+          "pages": [
+            6,
+            7,
+            8,
+            13,
+            14
+          ]
+        },
+        {
+          "key": "数字",
+          "text": "无噪声均值801对Dreamer849；相机噪声254对CURL390；传感器563对212，视频598对228。并非所有条件最好。",
+          "pages": [
+            7,
+            8
+          ]
+        },
+        {
+          "key": "边界",
+          "text": "外源过程独立且不影响可控过程的假设很强；可加奖励不影响风险中性最优动作的结论，不扩展到约束或风险敏感目标。线性探针/微调不是零样本因果证明。",
+          "pages": [
+            3,
+            8,
+            9,
+            14
+          ]
+        }
+      ],
+      "anchors": [
+        {
+          "page": 8,
+          "needle": "801"
+        },
+        {
+          "page": 8,
+          "needle": "563"
+        },
+        {
+          "page": 14,
+          "needle": "linear"
+        }
+      ],
+      "quiz": {
+        "question": "不可控因素能否直接删除？",
+        "answer": "不能。风、交通灯等可能决定动作后果；需判断是否影响任务回报、约束或可控动力学。",
+        "self_check": "对照原文页码、信息接口、控制通路、预算与证据边界；未执行作者模型。"
+      },
+      "reflection": "“宏观”抽象要声明条件独立性及目标，不能按物体身份删信息。",
+      "next_experiment": "加入风影响动力学与只加奖励两条件，检查抽象失效边界。",
+      "venue": "原文版本所示；未据预印本模板推断主会录取",
+      "code_status": "仅记录原文代码声明；未安装或运行作者模型。",
+      "author_type": "assistant",
+      "source_sha256": "08e15e4ac912ba246da1c5c7919de64c7539c8c2c64af3843b10a2b6cdb3cd6a",
+      "page_count": 22,
+      "read_scope": "主文及read_pages明确列出的相关附录；其余附录不计已读。未运行作者模型。"
+    },
+    {
+      "id": "r3-16",
+      "name": "Deep Bisimulation for Control",
+      "arxiv": "2006.10742",
+      "source": "https://arxiv.org/pdf/2006.10742",
+      "reason": "任务相对等价和迁移边界",
+      "year": 2020,
+      "status": "main_and_relevant_appendix_read",
+      "source_batch": "research20-round3",
+      "counting": "本轮新完成，上轮未完成",
+      "read_pages": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        13,
+        14
+      ],
+      "keys": [
+        {
+          "key": "靶子",
+          "text": "用奖励与转移双模拟距离学习抗干扰控制表示。",
+          "pages": [
+            1,
+            2
+          ]
+        },
+        {
+          "key": "坐标",
+          "text": "DBC，原文ICLR2021；SAC上表征学习，不是部署MPC模型。",
+          "pages": [
+            1,
+            3,
+            9
+          ]
+        },
+        {
+          "key": "主张",
+          "text": "理想双模拟有价值界，但跨任务保留依赖新奖励祖先包含关系。",
+          "pages": [
+            4,
+            5,
+            13,
+            14
+          ]
+        },
+        {
+          "key": "机制",
+          "text": "encoder的L1距离匹配奖励差加高斯转移W2距离，stop-gradient目标；转移模型用于训练表征。",
+          "pages": [
+            3,
+            4
+          ]
+        },
+        {
+          "key": "证据",
+          "text": "BlockMDP依赖观测识别状态，不是一般POMDP。DMC9任务10seed SE；CARLA为模拟驾驶，3seed×100评测。",
+          "pages": [
+            5,
+            6,
+            7,
+            8,
+            9
+          ]
+        },
+        {
+          "key": "数字",
+          "text": "CARLA到达100米成功24%对DeepMDP17%；距离179对106.7，但碰撞强度2673劣于1958。作者报告单GTX1080约12小时。",
+          "pages": [
+            9
+          ]
+        },
+        {
+          "key": "边界",
+          "text": "任务迁移冻结encoder后仍训练新SAC；不能叫策略零样本迁移。回报变好不意味着所有安全指标变好。",
+          "pages": [
+            8,
+            9,
+            13,
+            14
+          ]
+        }
+      ],
+      "anchors": [
+        {
+          "page": 9,
+          "needle": "2673"
+        },
+        {
+          "page": 9,
+          "needle": "planning"
+        },
+        {
+          "page": 13,
+          "needle": "Causal"
+        }
+      ],
+      "quiz": {
+        "question": "学了转移模型就等于通过世界模型规划吗？",
+        "answer": "不是。DBC用模型塑造表示，部署动作由SAC产生；需标注模型在何时被调用。",
+        "self_check": "对照原文页码、信息接口、控制通路、预算与证据边界；未执行作者模型。"
+      },
+      "reflection": "学习通路与部署通路分别画图。",
+      "next_experiment": "比较相同encoder的SAC和MPC，分开奖励与安全指标。",
+      "venue": "原文版本所示；未据预印本模板推断主会录取",
+      "code_status": "仅记录原文代码声明；未安装或运行作者模型。",
+      "author_type": "assistant",
+      "source_sha256": "8322d722f58393f703be8cbc7c24de360a028926db6843feb0e2adc3a392b952",
+      "page_count": 16,
+      "read_scope": "主文及read_pages明确列出的相关附录；其余附录不计已读。未运行作者模型。"
+    },
+    {
+      "id": "r3-17",
+      "name": "Action-Conditioned Predictive Consistency",
+      "arxiv": "2608.12939v1",
+      "source": "https://arxiv.org/pdf/2608.12939v1",
+      "reason": "干扰不变与状态区分双检查",
+      "year": 2026,
+      "status": "main_and_relevant_appendix_read",
+      "source_batch": "research20-round3",
+      "counting": "本轮新完成，上轮未完成",
+      "read_pages": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        21,
+        22
+      ],
+      "keys": [
+        {
+          "key": "靶子",
+          "text": "不用重训，诊断冻结世界模型在视觉扰动下的动作条件一致性。",
+          "pages": [
+            1,
+            2
+          ]
+        },
+        {
+          "key": "坐标",
+          "text": "ACPC为评测诊断，不是训练算法，也不是已证有效的新规划器。",
+          "pages": [
+            3,
+            4
+          ]
+        },
+        {
+          "key": "主张",
+          "text": "一致性可帮助筛查，但一致地错仍会通过，必须配状态可区分性与准确度。",
+          "pages": [
+            4,
+            5
+          ]
+        },
+        {
+          "key": "机制",
+          "text": "干净/扰动历史用同动作滚动比较；三角界约束误差变化，不能直接给绝对误差；固定候选的间隔界也不是闭环回报保证。",
+          "pages": [
+            4,
+            5,
+            21,
+            22
+          ]
+        },
+        {
+          "key": "证据",
+          "text": "100anchor、5扰动、H8；IR用观察到的未来运动归一化，SR用GT状态标签，均非纯无标签任意部署诊断。阈值源任务选择。",
+          "pages": [
+            6,
+            7,
+            8
+          ]
+        },
+        {
+          "key": "数字",
+          "text": "通常扫参中77个IR通过模型也全通过SR；SR是防塌缩检查，但正常条件的额外增量未单独证实。blur/resize22/24一致、rho.835不是鲁棒性认证。",
+          "pages": [
+            9,
+            10,
+            11,
+            12
+          ]
+        },
+        {
+          "key": "边界",
+          "text": "需要任务保持扰动；真正改变物理意义的因素不能要求不变。自适应CEM结论依赖共享随机性/elite不变，未评ACPC引导实际控制收益。",
+          "pages": [
+            11,
+            12,
+            13,
+            21,
+            22
+          ]
+        }
+      ],
+      "anchors": [
+        {
+          "page": 9,
+          "needle": "0.3"
+        },
+        {
+          "page": 12,
+          "needle": "0.835"
+        },
+        {
+          "page": 22,
+          "needle": "threshold"
+        }
+      ],
+      "quiz": {
+        "question": "扰动前后预测一致证明预测正确吗？",
+        "answer": "不证明；常数表示也一致，且模型可能共同偏差。需可区分性、绝对误差和决策后果。",
+        "self_check": "对照原文页码、信息接口、控制通路、预算与证据边界；未执行作者模型。"
+      },
+      "reflection": "稳定、准确、可决策和可校准成为不同审查项。",
+      "next_experiment": "加入共同偏差与塌缩模型作为负对照，独立评闭环选择。",
+      "venue": "原文版本所示；未据预印本模板推断主会录取",
+      "code_status": "仅记录原文代码声明；未安装或运行作者模型。",
+      "author_type": "assistant",
+      "source_sha256": "8124dc9d1d9206f369db4ae16ab11a436bb7b790c1b235f2a3c8176a17b4732f",
+      "page_count": 26,
+      "read_scope": "主文及read_pages明确列出的相关附录；其余附录不计已读。未运行作者模型。"
+    },
+    {
+      "id": "r3-18",
+      "name": "PSG-JEPA",
+      "arxiv": "2608.06799v1",
+      "source": "https://arxiv.org/pdf/2608.06799v1",
+      "reason": "物理状态监督与表征到控制的桥接",
+      "year": 2026,
+      "status": "main_and_relevant_appendix_read",
+      "source_batch": "research20-round3",
+      "counting": "本轮新完成，上轮未完成",
+      "read_pages": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "keys": [
+        {
+          "key": "靶子",
+          "text": "前向预测不能保证单潜状态或潜变量对中容易读出机器人姿态及状态变化。",
+          "pages": [
+            1,
+            2
+          ]
+        },
+        {
+          "key": "坐标",
+          "text": "LeWM加训练期特权本体状态监督，部署无额外head；不是纯无奖励自监督同信息比较。",
+          "pages": [
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "key": "主张",
+          "text": "单状态与跨时距净关节变化有互补收益，改善探针、冻结编码器动作头和微调策略。",
+          "pages": [
+            6,
+            7,
+            8,
+            9
+          ]
+        },
+        {
+          "key": "机制",
+          "text": "4帧窗口分别回归本体状态，所有有效端点对回归净关节变化；每时距均权，避免短时对数目占优。保留SIGReg，grounding权重0.1，部署丢弃训练head。",
+          "pages": [
+            4,
+            5
+          ]
+        },
+        {
+          "key": "证据",
+          "text": "episode级探针split；所谓规划是冻结encoder训练GC-IDM动作MLP，正文明确不使用原预测器；另测开环潜预测。LIBERO联合微调encoder+OFT；实机3任务100示范/任务、50试验。",
+          "pages": [
+            6,
+            7,
+            8,
+            9
+          ]
+        },
+        {
+          "key": "数字",
+          "text": "Cube5epoch动作头95.0%对80.7%，100epoch98.7%对89.7%；去state仍93.3%，去transition81.3%。LIBERO85.3±3.9对77.7±0.5；实机79.3%对60.0%。",
+          "pages": [
+            7,
+            8,
+            9
+          ]
+        },
+        {
+          "key": "边界",
+          "text": "GC-IDM成功不能证明动力学预测器改善导致收益，因为控制不调用它。探针变化与控制消融敏感点不同；额外本体标签需同标签基线，净关节差可唯一定义不意味着仅靠图像可恢复，旋转周期和遮挡也需考虑。无一般交互物理证据。",
+          "pages": [
+            3,
+            5,
+            7,
+            9
+          ]
+        }
+      ],
+      "anchors": [
+        {
+          "page": 7,
+          "needle": "without using the predictor"
+        },
+        {
+          "page": 5,
+          "needle": "different action sequences"
+        },
+        {
+          "page": 9,
+          "needle": "within seed noise"
+        }
+      ],
+      "quiz": {
+        "question": "论文“planning”成功上升，能否归因于学习到更好的世界动力学？",
+        "answer": "这里不能。Q2控制使用冻结表征训练的GC-IDM，原前向预测器不在控制路径中。它首先证明表征更好用；开环潜MSE另有证据但缺少在公共物理尺度上的因果归因。",
+        "self_check": "核对正文、表格、读出与控制、额外监督和预算；建议实验未执行。"
+      },
+      "reflection": "必须从实际执行链给方法分类；标题和planning一词不能代替机制。该工作已覆盖简单物理状态/净变化辅助监督。",
+      "next_experiment": "统一数据标签比较动作恢复与物理变化监督，在同一encoder下分别用IDM与CEM，检查收益到底来自表示还是预测。",
+      "venue": "arXiv预印本；本轮未核实主会录取",
+      "code_status": "原文给项目页，完整代码发行和环境未在本轮核实。",
+      "author_type": "assistant",
+      "source_sha256": "391a03f3269d720720789e48c8bde1e6afd8e34201b7675358579d0e9749847c",
+      "page_count": 12,
+      "read_scope": "主文及read_pages明确列出的相关附录；其余附录不计已读。未运行作者模型。"
+    },
+    {
+      "id": "r3-19",
+      "name": "Qantara",
+      "arxiv": "2607.04978v2",
+      "source": "https://arxiv.org/pdf/2607.04978v2",
+      "reason": "小模型多推理范式和公开实现",
+      "year": 2026,
+      "status": "main_and_relevant_appendix_read",
+      "source_batch": "research20-round3",
+      "counting": "本轮新完成，上轮未完成",
+      "read_pages": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        13,
+        14,
+        15,
+        16
+      ],
+      "keys": [
+        {
+          "key": "靶子",
+          "text": "同一个小型JEPA checkpoint能否同时支持规划、模仿与视频-逆动力学控制。",
+          "pages": [
+            1,
+            2
+          ]
+        },
+        {
+          "key": "坐标",
+          "text": "约21M从零联合动作/潜变量建模；仿真离线，3种推理接口所获目标信息不同。",
+          "pages": [
+            3,
+            4,
+            5,
+            9
+          ]
+        },
+        {
+          "key": "主张",
+          "text": "匹配训练与推理查询的噪声边界较有效，单模型多接口成立，但goal-blind成功不等于任意目标泛化。",
+          "pages": [
+            5,
+            6,
+            7
+          ]
+        },
+        {
+          "key": "机制",
+          "text": "动作noise-to-data flow，状态以先前clean latent为桥锚，block间因果/内双向；4边+对角5模式重复每数据行，残差零初始化，SIGReg。CEM沿forward边，另两路径均不看目标。",
+          "pages": [
+            3,
+            4,
+            5,
+            14,
+            15
+          ]
+        },
+        {
+          "key": "证据",
+          "text": "3训练×5评测×50回合=750/格；重训LeWM/PLDM并保留发表数值，不混成同管线。Cube额外容量和DINO重训、双Cube，Reacher20epoch控制。5模式有效batch640对baseline128，epoch/步数匹配不等于FLOPs匹配。",
+          "pages": [
+            5,
+            6,
+            8,
+            14
+          ]
+        },
+        {
+          "key": "数字",
+          "text": "Cube93.7%对同管线LeWM76.7%，PushT90.1%反低于92.3%。Reacher10epoch+16.6pp，20epochLeWM80.0接近Qantara79.7。BC/video-inverse Reacher6.1/4.8%。",
+          "pages": [
+            6,
+            7
+          ]
+        },
+        {
+          "key": "边界",
+          "text": "快接口17–27ms与规划0.4–1.2s按不同动作缓冲节奏摊销，比较信息也不同。目标来自数据未来，示范固定目标/容差可支撑goal-blind得分。复现实验称Reacher实际随机数据与LeWM附录SAC描述冲突，是作者检查报告，未由本轮独立下载验证。workshop不等主会。",
+          "pages": [
+            6,
+            7,
+            9,
+            13,
+            14,
+            16
+          ]
+        }
+      ],
+      "anchors": [
+        {
+          "page": 14,
+          "needle": "effective batch"
+        },
+        {
+          "page": 7,
+          "needle": "goal-blind"
+        },
+        {
+          "page": 16,
+          "needle": "worst-case decision latency"
+        }
+      ],
+      "quiz": {
+        "question": "同一checkpoint三种模式都成功，能否说快模式等价替代目标条件规划？",
+        "answer": "不能。快模式不接收目标，靠示范目标规律与容差；Reacher会近随机失败。需要固定任务/目标信息、重规划节奏和训练计算量再比较速度—成功。",
+        "self_check": "核对正文、表格、读出与控制、额外监督和预算；建议实验未执行。"
+      },
+      "reflection": "同epoch并不意味着同算力，固定目标示范可制造看似世界理解的成功；综述应按实际接口而非统一模型标签分类。",
+      "next_experiment": "固定随机目标和视觉依赖，比较goal-aware快速动作头、goal-blind模式与CEM；配平有效batch/FLOPs，报告每调用和摊销延迟。",
+      "venue": "arXiv预印本；本轮未核实主会录取",
+      "code_status": "作者仓库固定提交1242954与MIT已核对，未安装运行；README为ICML2026 DEMO非归档workshop。",
+      "author_type": "assistant",
+      "source_sha256": "eb0b1d925a759744fa62375c97a890069d5d46ad7a9c521f59086b076cba6d04",
+      "page_count": 19,
+      "read_scope": "主文及read_pages明确列出的相关附录；其余附录不计已读。未运行作者模型。"
+    },
+    {
+      "id": "r3-20",
+      "name": "Learning Action-based Representations Using Invariance",
+      "arxiv": "2403.16369",
+      "source": "https://arxiv.org/pdf/2403.16369",
+      "reason": "可控性不等于单步动作恢复",
+      "year": 2024,
+      "status": "main_and_relevant_appendix_read",
+      "source_batch": "research20-round3",
+      "counting": "本轮新完成，上轮未完成",
+      "read_pages": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24
+      ],
+      "keys": [
+        {
+          "key": "靶子",
+          "text": "奖励自由预训练多步可控表征，缓解单步逆动作的短视。",
+          "pages": [
+            1,
+            2
+          ]
+        },
+        {
+          "key": "坐标",
+          "text": "RLC2024原文；随机动作预训练后训练下游RL，非部署时潜MPC。",
+          "pages": [
+            1,
+            6,
+            7
+          ]
+        },
+        {
+          "key": "主张",
+          "text": "递归动作双模拟可纳入远处障碍，但逆动作充分性不等于所有任务充分性。",
+          "pages": [
+            4,
+            5,
+            8,
+            9
+          ]
+        },
+        {
+          "key": "机制",
+          "text": "先最小单步逆动作表示psi，再用psi差异与同动作转移W1的递归加权定义phi；高斯前向模型与EMA交替训练，动作均匀或行为分布采样。",
+          "pages": [
+            4,
+            5,
+            6
+          ]
+        },
+        {
+          "key": "证据",
+          "text": "四类设置均5试验95%CI；Habitat是五个Tiny Gibson场景的目标居中正交俯视RGB-D，并非通常第一视角PointNav。下游微调encoder。",
+          "pages": [
+            7,
+            21,
+            22
+          ]
+        },
+        {
+          "key": "数字",
+          "text": "预训Nav2D1M、PointMass.25M、Habitat100k样本；下游分别2M/7M/2M步。Habitat最终.7754对单步.7716，短视任务优势可能小。",
+          "pages": [
+            20,
+            21
+          ]
+        },
+        {
+          "key": "边界",
+          "text": "附录明确动作显示器捷径会遗漏agent状态；不可控但奖励相关目标会被删除，故下游需要微调。强独立与充分性假设限制定理，行为动作分布不能视为任意干预保证。",
+          "pages": [
+            20,
+            21,
+            24
+          ]
+        }
+      ],
+      "anchors": [
+        {
+          "page": 20,
+          "needle": "0.7754"
+        },
+        {
+          "page": 21,
+          "needle": "100k"
+        },
+        {
+          "page": 22,
+          "needle": "orthographic"
+        }
+      ],
+      "quiz": {
+        "question": "逆动作能完美恢复是否足够？",
+        "answer": "不够，角落显示上一动作就是明确反例；且不可控目标可能重要，长程递归也受基础表示缺失限制。",
+        "self_check": "对照原文页码、信息接口、控制通路、预算与证据边界；未执行作者模型。"
+      },
+      "reflection": "将动作可识别、可控、奖励相关和任务充分分别标注。",
+      "next_experiment": "加入动作显示器捷径与外源目标，测试冻结/微调表示的边界。",
+      "venue": "原文版本所示；未据预印本模板推断主会录取",
+      "code_status": "仅记录原文代码声明；未安装或运行作者模型。",
+      "author_type": "assistant",
+      "source_sha256": "13cb160b15607dc413a11c0e8936897ccb64df6e8908a99b00e2daa739f2a91d",
+      "page_count": 24,
+      "read_scope": "主文及read_pages明确列出的相关附录；其余附录不计已读。未运行作者模型。"
+    },
+    {
+      "id": "r4-01",
+      "name": "Predictive but Not Plannable: RC-aux",
+      "arxiv": "2605.07278",
+      "source": "https://arxiv.org/pdf/2605.07278",
+      "reason": "预测误差与规划几何",
+      "year": 2026,
+      "status": "main_and_relevant_appendix_read",
+      "source_batch": "research-increment20",
+      "counting": "本轮新选新读",
+      "read_pages": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        19,
+        20,
+        21
+      ],
+      "keys": [
+        {
+          "key": "靶子",
+          "text": "纠正短程预测训练与有限预算目标规划的时空错配。",
+          "pages": [
+            1,
+            2
+          ]
+        },
+        {
+          "key": "坐标",
+          "text": "LeWM同骨干，多步开环训练加预算条件可达性；不是新通用骨干。",
+          "pages": [
+            3,
+            4
+          ]
+        },
+        {
+          "key": "主张",
+          "text": "控制收益兼有训练和planner部分，但可达性标签只是轨迹代理。",
+          "pages": [
+            5,
+            8
+          ]
+        },
+        {
+          "key": "机制",
+          "text": "按轨迹时间差构造预算正负标签及跨轨迹负样本，预测latent stop-gradient校准；planner用中间可达性折扣乘终端距离，lambda=0回基础。",
+          "pages": [
+            4,
+            5,
+            6,
+            7
+          ]
+        },
+        {
+          "key": "证据",
+          "text": "5固定组×50episode，组间SD不是5独立训练seed。续训对照四任务，Wall从头训练；LIBERO是双RGB动作chunk头，非CEM。",
+          "pages": [
+            7,
+            19,
+            20
+          ]
+        },
+        {
+          "key": "数字",
+          "text": "Wall50.4→72.4%(无planner项)→83.6%；PushT90.8低于续训91.2。18.034M→18.710M；控制微基准开销<.8ms/call不含模拟。",
+          "pages": [
+            7,
+            8,
+            9
+          ]
+        },
+        {
+          "key": "边界",
+          "text": "时间差大不保证最短路不可达，跨轨迹负样本亦可错；Cube lambda=0。附录配对表Reacher LeWM-only17、RC-only32，与表1原LeWM差6点而非续训差4.4点，须明确对照身份。NeurIPS checklist不是录取证明。",
+          "pages": [
+            5,
+            19,
+            20,
+            21
+          ]
+        }
+      ],
+      "anchors": [
+        {
+          "page": 8,
+          "needle": "72.4"
+        },
+        {
+          "page": 19,
+          "needle": "50 episodes"
+        },
+        {
+          "page": 21,
+          "needle": "17"
+        }
+      ],
+      "quiz": {
+        "question": "时间差超预算就证明环境不可达吗？",
+        "answer": "不证明，可能存在未观察到的捷径。应区分轨迹诱导标签与环境最短路。",
+        "self_check": "对照原文页码、信息接口、控制通路、预算与证据边界；未执行作者模型。"
+      },
+      "reflection": "学习标签的可识别对象需要先明确，避免代理量冒充物理事实。",
+      "next_experiment": "用小图最短路oracle测假负样本，再做匹配planner/训练预算消融。",
+      "venue": "原文版本所示；未据预印本模板推断主会录取",
+      "code_status": "仅记录原文代码声明；未安装或运行作者模型。",
+      "author_type": "assistant",
+      "source_sha256": "aa27d998641a8a840c6a1619cba9fcff1db05ce10ce4af9c1cf0434fb940e0b7",
+      "page_count": 35,
+      "read_scope": "主文及read_pages明确列出的相关附录；其余附录不计已读。未运行作者模型。"
+    },
+    {
+      "id": "r4-02",
+      "name": "UWM-JEPA",
+      "arxiv": "2605.25313",
+      "source": "https://arxiv.org/pdf/2605.25313",
+      "reason": "部分观测下信念空间与反事实",
+      "year": 2026,
+      "status": "main_and_relevant_appendix_read",
+      "source_batch": "research-increment20",
+      "counting": "本轮新选新读",
+      "read_pages": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        10,
+        11,
+        12,
+        13,
+        14
+      ],
+      "keys": [
+        {
+          "key": "靶子",
+          "text": "部分可观测下保持盲滚动中有用的隐状态信息与动作敏感性。",
+          "pages": [
+            1,
+            2
+          ]
+        },
+        {
+          "key": "坐标",
+          "text": "密度矩阵只是潜变量几何；不是证明环境由量子构成，也不是量子硬件要求。",
+          "pages": [
+            2,
+            3
+          ]
+        },
+        {
+          "key": "主张",
+          "text": "联合态幺正演化严格保谱，但约化读出可失去有用信息；不构成校准真实后验保证。",
+          "pages": [
+            3,
+            6,
+            7
+          ]
+        },
+        {
+          "key": "机制",
+          "text": "16×16联合密度矩阵，系统8×环境2；Hermitian动作生成元H0+aH1，unitary共轭；EMA目标在偏迹和投影后匹配，反事实目标依赖模拟器状态。",
+          "pages": [
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "key": "证据",
+          "text": "结构化振子/CartPole类，context探针5seed，其余3seed；参数量匹配不等于潜自由度匹配。附录直接监督LSTM控制能解任务。",
+          "pages": [
+            4,
+            5,
+            6,
+            7,
+            13
+          ]
+        },
+        {
+          "key": "数字",
+          "text": "context R2 .901对.894、p=.70；速度符号.770对.530，但无动作仍.733；监督LSTM .960。k20双方盲读出很差，不能称无限记忆。",
+          "pages": [
+            4,
+            6,
+            13
+          ]
+        },
+        {
+          "key": "边界",
+          "text": "保谱不防encoder初始塌缩，也不保证约化可读；非校准belief后验，没有竞争规划结果。teacher-forced目标动作通道退化是本设置观察，不是所有JEPA定理。",
+          "pages": [
+            7,
+            10,
+            11,
+            12,
+            14
+          ]
+        }
+      ],
+      "anchors": [
+        {
+          "page": 4,
+          "needle": "0.770"
+        },
+        {
+          "page": 6,
+          "needle": "0.901"
+        },
+        {
+          "page": 13,
+          "needle": "0.960"
+        }
+      ],
+      "quiz": {
+        "question": "幺正不遗忘是否保证任务记忆与不确定性正确？",
+        "answer": "不保证。联合态可逆不等于约化探针可读，更不等于与真实隐藏状态后验校准。",
+        "self_check": "对照原文页码、信息接口、控制通路、预算与证据边界；未执行作者模型。"
+      },
+      "reflection": "从数学不变量到操作性能力之间必须补测量桥梁。",
+      "next_experiment": "用普通belief-RNN、独立ensemble与同自由度模型，匹配反事实监督、测校准和控制。",
+      "venue": "原文版本所示；未据预印本模板推断主会录取",
+      "code_status": "仅记录原文代码声明；未安装或运行作者模型。",
+      "author_type": "assistant",
+      "source_sha256": "d78ca710e1336283519bced16d475c9c791af0c4e91699f8c79bc2b7d26c5e0d",
+      "page_count": 14,
+      "read_scope": "主文及read_pages明确列出的相关附录；其余附录不计已读。未运行作者模型。"
+    },
+    {
+      "id": "r4-03",
+      "name": "Right Ranking, Wrong Scale",
+      "arxiv": "2611.02699",
+      "source": "https://arxiv.org/pdf/2611.02699",
+      "reason": "独立复现与不确定性校准",
+      "year": 2026,
+      "status": "main_and_relevant_appendix_read",
+      "source_batch": "research-increment20",
+      "counting": "本轮新选新读",
+      "read_pages": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        39,
+        40
+      ],
+      "keys": [
+        {
+          "key": "靶子",
+          "text": "复核四足机器人潜模拟器训练与ensemble不确定性的排序和尺度。",
+          "pages": [
+            1,
+            2
+          ]
+        },
+        {
+          "key": "坐标",
+          "text": "单作者复现审计预印本；ANYmal D本体状态而非RGB；不把他人的复现当成本轮运行。",
+          "pages": [
+            3,
+            4
+          ]
+        },
+        {
+          "key": "主张",
+          "text": "滚动训练的长程优势在此数据成立；误差排序相关强仍可能严重失准。",
+          "pages": [
+            5,
+            7,
+            8,
+            9
+          ]
+        },
+        {
+          "key": "机制",
+          "text": "梯度/损失对齐原实现；五折按episode留出，区分共享trunk/独立模型及均值反馈/逐成员滚动；推导采样MSE期望=(mu-y)^2+sigma^2。",
+          "pages": [
+            3,
+            5,
+            7,
+            8
+          ]
+        },
+        {
+          "key": "证据",
+          "text": "10个20秒episode、20独立400步轨迹，原checkpoint训练行不明不能称holdout；只有0.13%原预算、两CPU核，未训练policy。35规则未跨规则统一校正。",
+          "pages": [
+            4,
+            5,
+            11
+          ]
+        },
+        {
+          "key": "数字",
+          "text": "100步Spearman+.90而1sigma覆盖4.6%，逐成员滚动升33%仍低于68%；按h重标可修1sigma，但2sigma84%低于95%。368步各10episode滚动胜teacher-forcing，短窗单步相反。",
+          "pages": [
+            5,
+            8,
+            9,
+            10
+          ]
+        },
+        {
+          "key": "边界",
+          "text": "原模型penalty未声称校准区间，一步惩罚与累积误差须分开；论文报告动作错位等缺陷但本轮未复核上游代码。公开文中代码为匿名补充材料、永久标识待接收，不能保证可直接克隆。主文及附录39–40页的方差目标推导/梯度检查已读，其余附录不计已读。",
+          "pages": [
+            6,
+            8,
+            10,
+            11,
+            12
+          ]
+        }
+      ],
+      "anchors": [
+        {
+          "page": 8,
+          "needle": "4.6%"
+        },
+        {
+          "page": 9,
+          "needle": "+0.90"
+        },
+        {
+          "page": 10,
+          "needle": "84%"
+        }
+      ],
+      "quiz": {
+        "question": "相关系数.90能支持安全置信区间吗？",
+        "answer": "不能，排序与尺度不同；还需独立episode校准覆盖、尾部和闭环代价。原惩罚权重也不能修正随h变化的失准。",
+        "self_check": "对照原文页码、信息接口、控制通路、预算与证据边界；未执行作者模型。"
+      },
+      "reflection": "新增排序、覆盖、传播和控制后果四层审查，而非只看一条不确定性曲线。",
+      "next_experiment": "先用可公开模型在CPU数据上核时间索引与episode切分，再评多h覆盖；控制实验另计预算。",
+      "venue": "原文版本所示；未据预印本模板推断主会录取",
+      "code_status": "仅记录原文代码声明；未安装或运行作者模型。",
+      "author_type": "assistant",
+      "source_sha256": "35e557c4d0848b5cfefeb920efcbaad505e8b82b410643f849561aa48c441182",
+      "page_count": 56,
+      "read_scope": "主文及read_pages明确列出的相关附录；其余附录不计已读。未运行作者模型。"
+    }
+  ],
+  "positioning": {
+    "headline": "适合你的定位：面向机器人决策的视觉世界模型，研究任务相关信息的保留与使用",
+    "basis": "基于你自述的CV、PyTorch、VLA基础和项目现有两批40篇档案；没有假设你已具备真实机器人、NVIDIA卡或大规模数据。研究能力和可投入时间尚未全面评估，定位为条件性建议。",
+    "question": "当任务要求或外部交互发生变化时，视觉世界模型会错误压缩哪些原本可观测、后来决定动作成败的信息？能否以小规模训练修复，并获得真实闭环收益？",
+    "judgment": "定位维持：面向决策的视觉世界模型。创新判断收紧：任务相关抽象、动作可识别与候选排序已有直接先例；应先测相关性切换下的抽象失效，再决定是否设计新模型。",
+    "example": "宏观：不发生交互时，简化状态足以规划。关键例外：同样大小、速度与外观的外部物体开始阻挡通路或改变接触后果。例外要按动作选择的损失定义，而不是按画面罕见程度定义。对象是否不可控与是否影响决策是两回事；这个概念本身已有先例。",
+    "fit": [
+      {
+        "direction": "动作条件视觉表征与潜动力学",
+        "fit": "主线",
+        "reason": "直接使用CV表征和PyTorch，小型预测器与仿真能形成完整控制证据。"
+      },
+      {
+        "direction": "物体交互与任务相关抽象",
+        "fit": "主线中的具体问题",
+        "reason": "适合把宏观与例外变成受控实验，但要核对C-JEPA、ConfigWM、CF-JEPA等重合。"
+      },
+      {
+        "direction": "把世界模型用于VLA候选检查或改善动作",
+        "fit": "第二阶段扩展",
+        "reason": "能使用你的VLA背景；应先固定策略证明世界模型作用，避免策略重训、数据与模型同时变化。"
+      },
+      {
+        "direction": "从零训练大型视频世界模型或大型VLA",
+        "fit": "现阶段不优先",
+        "reason": "与已确认的算力、数据和实机条件不匹配，难快速隔离改进原因。"
+      },
+      {
+        "direction": "分子到宏观的统一物理模型、社会心理史学",
+        "fit": "启发来源",
+        "reason": "不作为首篇的技术范围；先限定可观测状态、动作与短期物理交互。"
+      }
+    ],
+    "prior_art": [
+      {
+        "name": "ConfigWM",
+        "source": "https://arxiv.org/abs/2610.27914",
+        "finding": "已研究任务查询改变视觉状态并用于规划；主要干扰是观察空间合成、不改变底层动力学，配置编码器还有干净配对目标监督。",
+        "scope": "主文1–8页和相关附录14–18页已读"
+      },
+      {
+        "name": "CF-JEPA",
+        "source": "https://arxiv.org/abs/2610.00727",
+        "finding": "已分解可控/外源潜变量；假设外源不影响可控过程。原文指出一个Cube动作接口可绕过当前视觉，提示先核对控制任务是否真依赖视觉。",
+        "scope": "主文1–7页已读"
+      },
+      {
+        "name": "Denoised MDPs",
+        "source": "https://proceedings.mlr.press/v162/wang22c.html",
+        "finding": "不可控不等于无用、独立性/奖励结构决定何时可忽略，已是经典论述。不能把风或障碍重要包装成新概念。",
+        "scope": "主文1–9、附录13–14页已读；七钥已补齐"
+      },
+      {
+        "name": "D-JEPA",
+        "source": "https://arxiv.org/abs/2609.24749",
+        "finding": "有限候选的排序修正与目标相对潜几何已研究；排序写回一致性部分由构造保证，不代表物理预测改善。",
+        "scope": "主文1–10、附录12–15及25–26页已读；七钥已补齐"
+      }
+    ],
+    "baselines": [
+      {
+        "name": "LeWM",
+        "role": "首选工程起点",
+        "source": "https://github.com/lucas-maes/le-wm",
+        "evidence": "约15M参数的原文方法；作者仓库有PyTorch模型、训练/评测入口与MIT许可。本轮固定提交只读核对，未安装/运行。",
+        "risk": "依赖stable-worldmodel和stable-pretraining；数据、checkpoint及DCU兼容未在本机验证。"
+      },
+      {
+        "name": "C-JEPA",
+        "role": "交互机制方向的第二基线",
+        "source": "https://github.com/galilai-group/cjepa",
+        "evidence": "已有物体表示、对象屏蔽与交互推理；仓库提供预提取slot/权重说明，本轮重新核对公开文件树与README。",
+        "risk": "仓库API没有识别到统一许可证；存在第三方组件和环境适配步骤，需要继续检查具体许可与依赖。不是最省事起点。"
+      },
+      {
+        "name": "Qantara",
+        "role": "备选小模型及多推理方式参考",
+        "source": "https://github.com/corl-team/qantara",
+        "evidence": "作者仓库含模型/训练/评测说明、MIT许可；README注明ICML2026 DEMO workshop、non-archival，不能写成ICML主会。",
+        "risk": "本轮只核对仓库，原文尚待精读，结果和复现性仍待验证。"
+      }
+    ],
+    "experiment": [
+      {
+        "stage": "1. 排除环境捷径",
+        "action": "正常观测、遮当前图、打乱当前图、打乱目标、打乱动作；记录真实环境成功率。",
+        "retreat": "若遮当前图仍不受影响，先换动作接口/任务；不把该环境成功率当视觉理解证据。"
+      },
+      {
+        "stage": "2. 做出稳定失败现象",
+        "action": "用配对物理场景控制外部对象是否产生真实作用；分开纯视觉干扰、交互条件变化、任务查询变化和不可辨隐藏状态。",
+        "retreat": "若正常模型不稳定或简单全信息/数据增强基线即可解决，不急于设计模块。"
+      },
+      {
+        "stage": "3. 定位失败发生在哪一层",
+        "action": "原始观测历史可恢复性→潜变量强弱探针→固定动作的物理后果误差→固定候选与CEM随机流的选择损失→真实闭环结果。",
+        "retreat": "若原始观测也无法区分，增加历史/真实观测或主动探测；不要求编码器凭空恢复隐藏状态。"
+      },
+      {
+        "stage": "4. 最小修复与对照",
+        "action": "只按已定位原因选择保留支路、条件耦合预测或局部监督之一；等数据、等标签、等参数、等搜索/训练预算对照。特权物理量若用于训练，必须明确并提供同监督基线。",
+        "retreat": "若收益来自多标签、多算力或新数据，退回修正比较，不宣称结构创新。"
+      },
+      {
+        "stage": "5. 验证可迁移贡献",
+        "action": "独立验证集调阈值，配对多种子区间；跨任务、强度、布局及至少另一骨干检验，测端到端时延和干净性能损失。",
+        "retreat": "只有探针改善、单场景提升或无稳定闭环收益，结论限于诊断，不包装通用方法。"
+      }
+    ],
+    "timing": "可以把CPU接口审查、最小环境验证、短程基线和多种子扩展分段推进；尚未实测依赖安装/模型运行，不承诺一周出结果或固定卡时。",
+    "compute": "本轮只下载公开论文与少量源码，无作者模型运行、无计算卡申请、无模型API推理调用。使用超算卡前先告知队列、卡数、预计卡时、停止条件。",
+    "publication": "顶会潜力来自可复现的新现象、机制解释和跨条件有效修复。CV重点可围绕视觉表征与物理交互；机器人会议更需要控制证据；具体投稿由后续结果决定。目前不估计录取概率。"
+  },
+  "reasoning_changes": [
+    {
+      "before": "优先研究任务相关信息保留与使用。",
+      "evidence": "TIA第8页已讨论碰撞使干扰相关；Denoised MDPs区分可控与奖励相关。",
+      "after": "方向适配仍成立，但大概念不新；将具体问题限定为可观测因素的相关性切换与适应。",
+      "test": "分离纯视觉扰动、物理交互切换和任务查询切换；匹配监督与适应步数。",
+      "retreat": "若ConfigWM等在同协议已解决，撤回独立新颖性主张。"
+    },
+    {
+      "before": "控制提高可作为表示/世界模型价值的主要证据。",
+      "evidence": "INTACT共享E5 Direct89.39而actor-off70.08；RWM执行h5与h25为98.33与69.17。",
+      "after": "先识别encoder、预测器、动作头和反馈频率各自的贡献。",
+      "test": "固定checkpoint与候选池，做相同执行间隔的IDM/MPC交叉对照。",
+      "retreat": "若优势在节奏匹配后消失，不宣称动力学改进。"
+    },
+    {
+      "before": "动作条件/可控表示是有用的工程切入。",
+      "evidence": "Action-bisimulation附录20–21明确动作显示器捷径与不可控目标遗漏。",
+      "after": "动作恢复充分性不能替代任务充分性，长期递归也无法保证补回已丢信息。",
+      "test": "动作显示器、行为策略替换和不可控相关目标负对照。",
+      "retreat": "若可由旁路解题，先修数据和任务设计。"
+    },
+    {
+      "before": "候选排序修正与主线重叠，需查新。",
+      "evidence": "D-JEPA目标相对半径按秩构造；RC-aux时间差标签不是最短路真值。",
+      "after": "区分代理监督学到的量与真实可达/物理量。",
+      "test": "公共状态预测、跨目标跨候选泛化、小图最短路oracle。",
+      "retreat": "若只改善自定义分数，不作为更好物理世界模型。"
+    },
+    {
+      "before": "潜空间稳定性与不确定性可用于可靠规划。",
+      "evidence": "ACPC界只约束误差变化；UWM联合态保谱不保证约化可读；Right Ranking第8–10页排序+.90但100步覆盖4.6%。",
+      "after": "分别检查稳定、准确、排序、校准、传播与控制后果，不能相互代替。",
+      "test": "塌缩/共同偏差负例，多h独立episode覆盖与尾部测试，随后测控制损失。",
+      "retreat": "没有闭环实验时只报告诊断价值。"
+    },
+    {
+      "before": "综述帮助判断方向热点与选题定位。",
+      "evidence": "机器人综述第30–31页与WAM综述第12–15页已列动作接地、长期一致性、效率和多维评测。",
+      "after": "热点只支持重要性，不能支持新颖性或录取概率；相近LeWM后续也不是独立多域证据。",
+      "test": "按信息接口、部署通路、额外监督、域和预算建立可比矩阵。",
+      "retreat": "证据集中于同一协议时，降低泛化表述。"
+    }
+  ],
+  "surveys": [
+    {
+      "id": "survey-robot",
+      "source": "https://arxiv.org/abs/2605.00080",
+      "read_pages": [
+        4,
+        5,
+        28,
+        29,
+        30,
+        31
+      ],
+      "sha256": "1b035d79d5c135fd437e1bbe7625a7e284a405e0451a240e816ce5dcaf35f586",
+      "scope": "定向复核定义、分类、评测和挑战；未声称整篇逐页精读；不计入20篇。"
+    },
+    {
+      "id": "survey-wam",
+      "source": "https://arxiv.org/abs/2609.16074",
+      "read_pages": [
+        3,
+        4,
+        5,
+        6,
+        12,
+        13,
+        14,
+        15
+      ],
+      "sha256": "c410bbbd06e25c4592a043acf66ca2dcab5ef03eeae601c29093e50898338df4",
+      "scope": "定向复核定义、分类、评测和挑战；未声称整篇逐页精读；不计入20篇。"
+    }
+  ],
+  "selection_changes": [],
+  "audit": {
+    "selected": 20,
+    "downloaded": 20,
+    "completed": 20,
+    "pending": 0,
+    "keys": 140,
+    "anchors": 60,
+    "quizzes": 20,
+    "source_hashes_checked": 20,
+    "cards_used": 0,
+    "author_models_run": 0
+  }
+}

@@ -1,0 +1,262 @@
+[
+  {
+    "pid": "#1006",
+    "page": 2,
+    "label": "Figure 4",
+    "crop": [
+      0.495,
+      0.555,
+      0.885,
+      0.8
+    ],
+    "file": "451_2018_NeurIPS_World_Models_1803.10122.pdf",
+    "asset": "assets/core/1006.webp"
+  },
+  {
+    "pid": "#1009",
+    "page": 4,
+    "label": "Figure 2",
+    "crop": [
+      0.08,
+      0.08,
+      0.94,
+      0.36
+    ],
+    "file": "455_2019_ICML_Learning_Latent_Dynamics_for_Planning_from_1811.04551.pdf",
+    "asset": "assets/core/1009.webp"
+  },
+  {
+    "pid": "#1015",
+    "page": 3,
+    "label": "Figure 3",
+    "crop": [
+      0.08,
+      0.08,
+      0.94,
+      0.3
+    ],
+    "file": "461_2020_ICLR_Dream_to_Control_Learning_Behaviors_by_Lat_1912.01603.pdf",
+    "asset": "assets/core/1015.webp"
+  },
+  {
+    "pid": "#1023",
+    "page": 3,
+    "label": "Figure 2",
+    "crop": [
+      0.17,
+      0.075,
+      0.835,
+      0.36
+    ],
+    "file": "469_2021_ICLR_Mastering_Atari_with_Discrete_World_Models_2010.02193.pdf",
+    "asset": "assets/core/1023.webp"
+  },
+  {
+    "pid": "#231",
+    "page": 3,
+    "label": "Figure 3",
+    "crop": [
+      0.08,
+      0.04,
+      0.94,
+      0.35
+    ],
+    "file": "011_Nature_顶刊_DreamerV3_2301.04104.pdf",
+    "asset": "assets/core/231.webp"
+  },
+  {
+    "pid": "#1013",
+    "page": 7,
+    "label": "Figure 2",
+    "crop": [
+      0.17,
+      0.09,
+      0.83,
+      0.415
+    ],
+    "file": "459_2019_NeurIPS_When_to_Trust_Your_Model_Model-Based_Polic_1906.08253.pdf",
+    "asset": "assets/core/1013.webp"
+  },
+  {
+    "pid": "#230",
+    "page": 3,
+    "label": "Figure 3",
+    "crop": [
+      0.54,
+      0.52,
+      0.83,
+      0.7
+    ],
+    "file": "010_ICLR_主会_TD-MPC2_2310.16828.pdf",
+    "asset": "assets/core/230.webp"
+  },
+  {
+    "pid": "#1024",
+    "page": 2,
+    "label": "Figure 2",
+    "crop": [
+      0.56,
+      0.09,
+      0.91,
+      0.295
+    ],
+    "file": "470_2021_CoRL_DayDreamer_World_Models_for_Physical_Robot_2206.14176.pdf",
+    "asset": "assets/core/1024.webp"
+  },
+  {
+    "pid": "#299",
+    "page": 3,
+    "label": "Figure 2",
+    "crop": [
+      0.09,
+      0.415,
+      0.49,
+      0.54
+    ],
+    "file": "112_CVPR_主会(CCF-A)_V-JEPA_2404.08471.pdf",
+    "asset": "assets/core/299.webp"
+  },
+  {
+    "pid": "#300",
+    "page": 2,
+    "label": "Figure 1",
+    "crop": [
+      0.08,
+      0.04,
+      0.94,
+      0.34
+    ],
+    "file": "113_Meta_技术报告_V-JEPA_2_2-AC_2506.09985.pdf",
+    "asset": "assets/core/300.webp"
+  },
+  {
+    "pid": "#234",
+    "page": 4,
+    "label": "Figure 2",
+    "crop": [
+      0.07,
+      0.04,
+      0.94,
+      0.32
+    ],
+    "file": "014_arXiv_预印本_DINO-WM_2411.04983.pdf",
+    "asset": "assets/core/234.webp"
+  },
+  {
+    "pid": "#229",
+    "page": 2,
+    "label": "Figure 1",
+    "crop": [
+      0.08,
+      0.07,
+      0.94,
+      0.24
+    ],
+    "file": "009_ICLR_主会_IRIS_2209.00588.pdf",
+    "asset": "assets/core/229.webp"
+  },
+  {
+    "pid": "#232",
+    "page": 2,
+    "label": "Figure 1",
+    "crop": [
+      0.17,
+      0.085,
+      0.51,
+      0.36
+    ],
+    "file": "012_NeurIPS_Spotlight_DIAMOND_2405.12399.pdf",
+    "asset": "assets/core/232.webp"
+  },
+  {
+    "pid": "#251",
+    "page": 4,
+    "label": "Figure 3",
+    "crop": [
+      0.1,
+      0.095,
+      0.9,
+      0.235
+    ],
+    "file": "046_ICML_最佳论文_Genie_2402.15391.pdf",
+    "asset": "assets/core/251.webp"
+  },
+  {
+    "pid": "#253",
+    "page": 3,
+    "label": "Figure 3",
+    "crop": [
+      0.08,
+      0.08,
+      0.94,
+      0.3
+    ],
+    "file": "047_ICLR_主会_GameNGen_2408.14837.pdf",
+    "asset": "assets/core/253.webp"
+  },
+  {
+    "pid": "#301",
+    "page": 2,
+    "label": "Figure 1",
+    "crop": [
+      0.08,
+      0.07,
+      0.94,
+      0.2
+    ],
+    "file": "114_NeurIPS_主会_iVideoGPT_2405.15223.pdf",
+    "asset": "assets/core/301.webp"
+  },
+  {
+    "pid": "#262",
+    "page": 3,
+    "label": "Figure 2",
+    "crop": [
+      0.08,
+      0.085,
+      0.94,
+      0.25
+    ],
+    "file": "060_arXiv_预印本_GAIA-1_2309.17080.pdf",
+    "asset": "assets/core/262.webp"
+  },
+  {
+    "pid": "#264",
+    "page": 4,
+    "label": "Figure 3",
+    "crop": [
+      0.07,
+      0.04,
+      0.94,
+      0.4
+    ],
+    "file": "062_ECCV_主会(CCF-A)_DriveDreamer_2309.09777.pdf",
+    "asset": "assets/core/264.webp"
+  },
+  {
+    "pid": "#280",
+    "page": 1,
+    "label": "Figure 1",
+    "crop": [
+      0.07,
+      0.22,
+      0.94,
+      0.58
+    ],
+    "file": "084_CVPR_主会荣誉提名_NWM_(Navigation_World_Models)_2412.03572.pdf",
+    "asset": "assets/core/280.webp"
+  },
+  {
+    "pid": "#305",
+    "page": 3,
+    "label": "Figure 2",
+    "crop": [
+      0.1,
+      0.095,
+      0.9,
+      0.415
+    ],
+    "file": "118_NVIDIA_平台发布_Cosmos_平台_2501.03575.pdf",
+    "asset": "assets/core/305.webp"
+  }
+]

@@ -1,0 +1,554 @@
+{
+  "schema": 1,
+  "checked_at": "2026-11-10T16:32:40.888025+08:00",
+  "scope": "公开原始题录/摘要、作者网页概述和README层面的查新；不新增精读名额，不是穷尽性查新或正式查新证明。",
+  "sources": [
+    {
+      "name": "DeepJEPA: Scaling World Models from Within",
+      "url": "https://arxiv.org/abs/2610.00368",
+      "read_scope": "摘要、作者项目概述、官方README与仓库文件入口",
+      "overlap": "直接重合：按候选/转移选择递归深度；额外计算聚集接触起始及持续交互，并影响CEM排序。不能再提出“接触关键事件才加深计算”为新贡献。",
+      "boundary": "README称continue标签来自边际潜预测改善；可研究信息压缩损失与计算不足的区分，但不能仅把gate目标改名为决策重要性。全文方法和附录尚未复核。",
+      "code": "https://github.com/deepjepa/DeepJEPA",
+      "code_status": "作者项目页确有Code链接；当前可见根目录只有README和assets，未确认训练/推理实现，不能写“官方代码已可复现”。",
+      "venue": "预印本；本轮未独立核实主会录取"
+    },
+    {
+      "name": "H-JEPA: End-to-End Learning of Hierarchical World Models for Visual Planning",
+      "url": "https://arxiv.org/abs/2610.06805v2",
+      "read_scope": "最新v2摘要、作者主页、官方仓库README",
+      "overlap": "直接重合宏观层：多个时间尺度与独立潜空间，自顶向下子目标；高层舍弃快变细节而保留慢变任务状态。",
+      "boundary": "“加宏观层/粗细层级”不是新颖点。本候选诊断先固定时间尺度，只审计空间压缩后丢失的决策线索。仍需查全文是否已覆盖同类诊断。",
+      "code": "https://github.com/kevinghst/H-JEPA",
+      "code_status": "官方代码入口确认，README列训练与规划、MIT；未安装或运行。",
+      "venue": "预印本；本轮未独立核实主会录取"
+    },
+    {
+      "name": "Hierarchical Planning with Latent World Models (HWM)",
+      "url": "https://arxiv.org/abs/2604.03208v3",
+      "read_scope": "最新v3摘要、作者主页、官方README",
+      "overlap": "直接重合层级规划：共享潜空间，多时间尺度预测和宏动作；粗层子目标交给细层规划。",
+      "boundary": "不能称首次粗到细视觉规划；与我们关心的“同一宏观状态内的关键局部例外”不是同一个实验变量。",
+      "code": "https://github.com/kevinghst/HWM_PLDM",
+      "code_status": "官方仓库为PLDM/Diverse Maze最小实现；不等于全部架构和机器人任务代码均发布。",
+      "venue": "arXiv最新版本及作者主页标CoRL 2026；本轮未查独立录取页"
+    },
+    {
+      "name": "ContactGuard: Pre-Contact Execution Monitoring with Action-Conditioned Latent World Models",
+      "url": "https://arxiv.org/abs/2608.13438",
+      "read_scope": "原始摘要",
+      "overlap": "直接覆盖接触前失败预警：在策略动作下预测接触后视觉潜状态，用小型失败probe触发abort。",
+      "boundary": "“接触前识别风险”不能独立立题。abort监测与恢复已压缩可见信息的区别仍需全文确认，不能默认前者没有同类机制。",
+      "code": "",
+      "code_status": "本轮未确认可运行官方实现",
+      "venue": "预印本；本轮未独立核实主会录取"
+    },
+    {
+      "name": "EV-WM: Event-Verified World Models for Long-Horizon Robotic Manipulation",
+      "url": "https://arxiv.org/abs/2606.13053v2",
+      "read_scope": "原始摘要",
+      "overlap": "结构事件/谓词、进度、语义、物理可行性和不确定性验证，并门控候选动作。",
+      "boundary": "“加事件头＋验证器”不是空白；事件标签和任务评分本身不能包装为骡机制。",
+      "code": "",
+      "code_status": "本轮未确认可运行官方实现",
+      "venue": "预印本；本轮未独立核实主会录取"
+    },
+    {
+      "name": "Learning Counterfactual World Models for Embodied Reasoning under Partial Observability (CLWM)",
+      "url": "https://arxiv.org/abs/2609.05834v2",
+      "read_scope": "最新v2原始摘要",
+      "overlap": "直接覆盖表示混叠/反事实坍塌：相似观测下不同干预后果未被区分，以belief和反事实对比目标及hard negatives修正。",
+      "boundary": "不能称首次发现视觉相似但行为不同。候选只审计可见信息经人为/学得空间压缩后丢失的部分，并明确不可观测对照；其额外新意尚未确认。",
+      "code": "",
+      "code_status": "本轮未确认可运行官方实现",
+      "venue": "arXiv备注标NeurIPS 2026 PTA Workshop；不是主会，未独立查录取页"
+    },
+    {
+      "name": "What Must a World Model Distinguish for Planning?",
+      "url": "https://arxiv.org/abs/2609.33030",
+      "read_scope": "原始摘要",
+      "overlap": "直接覆盖决策充分性：所需物理分辨率随目标、候选集合与规划器而变；候选发现与最终选择需要的信息不同。",
+      "boundary": "宏观充分/关键例外不是新的总原则；本实验第一阶段必须固定候选集合，只测选择，第二阶段再测闭环搜索。",
+      "code": "",
+      "code_status": "本轮未确认可运行官方实现",
+      "venue": "预印本；本轮未独立核实主会录取"
+    },
+    {
+      "name": "Looped World Models",
+      "url": "https://arxiv.org/abs/2606.18208",
+      "read_scope": "原始摘要",
+      "overlap": "摘要主张共享参数块迭代细化，按每步复杂度调整计算深度。",
+      "boundary": "概念上重合自适应深度；技术报告主张与已验证能力分开，不引用其100倍效率作已证事实。",
+      "code": "",
+      "code_status": "本轮未确认可运行官方实现",
+      "venue": "arXiv备注Technical Report；未核实会议录取"
+    },
+    {
+      "name": "Metacontrol for Adaptive Imagination-Based Optimization",
+      "url": "https://arxiv.org/abs/1705.02670",
+      "read_scope": "原始摘要与作者发表信息",
+      "overlap": "早已有元控制器选择模拟次数和专家，同时权衡任务收益、可靠性与计算成本。",
+      "boundary": "“遇到难例选择更精细模型”“按预期收益分计算”不是2026新原则。",
+      "code": "",
+      "code_status": "本轮未确认可运行官方实现",
+      "venue": "arXiv备注及作者CV标ICLR 2017；本轮未查独立录取页"
+    },
+    {
+      "name": "The Value Equivalence Principle for Model-Based Reinforcement Learning",
+      "url": "https://papers.nips.cc/paper/2020/hash/3bb585ea00014b0e3ebe4c6dd165a358-Abstract.html",
+      "read_scope": "NeurIPS官网摘要",
+      "overlap": "有限模型容量优先保留价值规划所需信息，而非完整恢复状态转移。",
+      "boundary": "“只保存决策所需细节”有成熟理论背景；不能将我们的口头宏观定义作为新理论。",
+      "code": "",
+      "code_status": "本轮未确认可运行官方实现",
+      "venue": "NeurIPS 2020，官网条目核实"
+    },
+    {
+      "name": "Using Multiple Fidelity Models in Motion Planning",
+      "url": "https://publications.ri.cmu.edu/using-multiple-fidelity-models-in-motion-planning",
+      "read_scope": "CMU机构摘要",
+      "overlap": "在同一路径中选择何时使用复杂模型，把精细计算集中在必要位置。",
+      "boundary": "低/高保真切换是已有方法；视觉潜状态、信息权限和任务相关例外仍只是具体化方向。",
+      "code": "",
+      "code_status": "本轮未确认可运行官方实现",
+      "venue": "CMU博士论文，2018；不是2026顶会工作"
+    },
+    {
+      "name": "Counterexample-Guided Abstraction Refinement (CEGAR)",
+      "url": "https://doi.org/10.1184/R1/6604547",
+      "read_scope": "CMU机构摘要及作者发表列表",
+      "overlap": "抽象模型遇到伪反例时细化抽象，保留小状态空间。",
+      "boundary": "“宏观＋反例触发细化”有经典先例；形式验证的可靠性结论不能直接移植到学习世界模型。",
+      "code": "",
+      "code_status": "本轮未确认可运行官方实现",
+      "venue": "经典形式验证工作；CAV 2000及后续版本，机构上传日期不是首发日期"
+    },
+    {
+      "name": "ContactWorld: What Representations Matter for Vision-Tactile Latent World Models in Contact-Rich Manipulation",
+      "url": "https://arxiv.org/abs/2606.13877v3",
+      "read_scope": "最新v3原始摘要",
+      "overlap": "固定模型/训练/规划框架研究空间保真、运动一致性、稳定性和视觉触觉表示；预测改善不总带来成功率提升。",
+      "boundary": "比较接触表示或加触觉并非空白。我们第一阶段不引入额外传感器，避免把信息优势当方法收益。",
+      "code": "",
+      "code_status": "本轮未确认可运行官方实现",
+      "venue": "预印本；本轮未独立核实主会录取"
+    },
+    {
+      "name": "WorldContact: A Contact-Centric World Model for Scalable Robot Learning",
+      "url": "https://arxiv.org/abs/2609.19600",
+      "read_scope": "原始摘要",
+      "overlap": "接触中心的可变形物体动力学，大时间步生成训练数据用于策略适配。",
+      "boundary": "接触中心世界模型不是首次；本文与视觉规划器的空间压缩例外协议属于不同接口，不据此宣称没有重合。",
+      "code": "",
+      "code_status": "本轮未确认可运行官方实现",
+      "venue": "预印本；本轮未独立核实主会录取"
+    },
+    {
+      "name": "AHA-WAM: Asynchronous Horizon-Adaptive World-Action Modeling with Observation-Guided Context Routing",
+      "url": "https://arxiv.org/abs/2606.09811",
+      "read_scope": "原始摘要",
+      "overlap": "低频世界规划/高频动作执行、上下文路由与异步时间跨度。",
+      "boundary": "自适应时间节奏与低频宏观规划已有工作，本候选先不同时改变时间步长和规划频率。",
+      "code": "",
+      "code_status": "本轮未确认可运行官方实现",
+      "venue": "预印本；本轮未独立核实主会录取"
+    },
+    {
+      "name": "Flex-π: A Multi-Stream World-Action Model with Compute Flexibility",
+      "url": "https://arxiv.org/abs/2608.10860",
+      "read_scope": "原始摘要及官方仓库入口",
+      "overlap": "同一checkpoint支持不同视觉流子集，含几何/语义和动作，提供计算模式选择。",
+      "boundary": "多流/轻重模式不是新的整体构造；本候选需把表示访问、传感器与算量逐项对齐。",
+      "code": "https://github.com/geyan21/flex-pi",
+      "code_status": "官方仓库入口已确认，未安装或运行。",
+      "venue": "预印本；本轮未独立核实主会录取"
+    }
+  ],
+  "boundary": {
+    "title": "宏观与“骡”：视觉世界模型的抽象失效与可恢复边界",
+    "verdict": "第二轮结论：接触按需加深、宏观层级、观测可恢复性与潜表示保留、分阶段失效诊断均已有相关工作。宏观与骡保留为问题视角和实验工作定义；目前未确认独立新贡献，不建议按现有口头方案直接立项为新方法。 不是查新通过。",
+    "macro": "同一历史观测经固定编码器和空间聚合形成的低成本状态。第一阶段固定时间跨度、动作候选和目标，只改变空间信息粒度。宏观不等于只预测慢变化，也不等于物理大尺度的通用定义。",
+    "mule": "在指定粗表示、目标和候选集合下，局部状态变化被粗表示合并，却使真实候选动作排序发生有意义的反转，导致粗模型所选动作的遗憾超过预先设定阈值。低频是另行报告的采样属性，不是高影响的同义词。",
+    "formal": "保持局部区域L之外的状态及目标/候选集合不变：||A(E(h))-A(E(h′))||≤ε；两状态的真实最优候选不同，且交叉选择损失均≥τ。ε、τ在验证集固定；近乎平分的排序翻转不算高影响。",
+    "three_cases": [
+      {
+        "name": "可恢复的骡",
+        "condition": "决定动作的局部线索在允许的历史图像中存在，却在粗聚合时被丢弃。",
+        "response": "在相同观测权限下重新访问保留的局部特征，检验是否改善真实动作选择。"
+      },
+      {
+        "name": "无关的意外",
+        "condition": "画面/背景改变很大，但候选动作收益基本不变。",
+        "response": "不应仅因预测误差大就触发精细分支；测误触发和计算浪费。"
+      },
+      {
+        "name": "当前不可知的骡",
+        "condition": "所有允许观测完全相同，隐藏参数不同导致最佳动作不同。",
+        "response": "同信息下更多确定性计算无法区分；应承认不确定。主动探测、额外传感器或保守动作是另一个有成本的问题。"
+      }
+    ],
+    "question": "在固定观测权限、目标、候选动作和计算预算下，能否识别并恢复“可见但经宏观压缩丢失、且影响动作选择”的局部信息，同时不对无关意外过度计算、不对不可观测例外虚报可修复？",
+    "scope_in": [
+      "先做视觉刚体推移/碰撞，单任务验证后再跨任务；不从分子/量子或全部固液气统一仿真起步。",
+      "固定编码器、数据、时间步长和候选集，先测排序/选择；闭环重规划另列实验。",
+      "粗细分支共享相同原始图像权限，计入局部访问、共享编码器、gate、预测器和搜索的全部实际延迟。",
+      "仿真真实状态、未来回报和接触标签只用于离线标注/诊断上限；部署gate不能读取未来或仿真真值。"
+    ],
+    "scope_out": [
+      "不声称首次宏观—微观层级、首次接触预警、首次反事实混叠、首次按需加深或首次反例细化。",
+      "不把异常检测AUROC、latent MSE下降或视觉可分性直接当任务收益。",
+      "不把细分支增加参数、数据、候选或传感器的优势归因给“骡”机制。",
+      "不保证罕见事件可被提前预测；完全不可观测的事件存在识别上限。"
+    ],
+    "method_status": "停止将宏观＋骡的组合本身作为新颖性主张。保留为受控复现/诊断主题；尚无已通过查新的新方法方案。",
+    "pilot": [
+      "P0：CPU构造宏观相同/决策不同、无关外观变化、观测完全相同三类反例，仅验证定义和信息边界。",
+      "P1：在已有冻结视觉特征的推移任务里寻找自然发生的空间压缩失败，按轨迹/物体划分训练验证测试；不要只展示人为挖坑的玩具。",
+      "P2：先做离线理想上限：恢复正确局部特征是否真减少真实动作遗憾？高分辨率也失败则退回诊断，不训练gate。",
+      "P3：上限成立才训练可部署触发器；与距离/接触阈值、ensemble/不确定性、cost margin、随机同预算、始终粗、始终细及可复现近作比较。",
+      "P4：固定候选选择收益成立，再做闭环搜索与第二环境；报告真实成功率、选择遗憾、尾部损失、gate校准、误触发、平均和p95延迟、显存及训练成本。"
+    ],
+    "stop": [
+      "现象只是已被Better Slots覆盖的编码器质量差异，或CLWM已覆盖同一问题构造，退回重新定位。",
+      "恢复信息后收益仅来自更多数据/参数/候选，不算支持假设。",
+      "只改善离线排序，闭环没有实际收益，收缩为诊断结果。",
+      "DeepJEPA/CLWM全文已包含同样信息分解、协议和方法，就撤销独立立题；不靠改名称继续。"
+    ],
+    "next_reading": "受用户原20篇精读约束，本轮不全文精读新增论文。正式立题之前最需全文核查DeepJEPA、CLWM、H-JEPA和What Must；本轮不把待核查项写成空白。"
+  },
+  "toy": {
+    "execution": "CPU Python标准库；构造性反例，不是论文复现、真实物理仿真、训练结果或已学会的触发器。",
+    "observable": {
+      "world_a": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "world_b": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "macro_a": [
+        0.0625,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "macro_b": [
+        0.0625,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "q_a": [
+        -1,
+        1
+      ],
+      "q_b": [
+        1,
+        -1
+      ],
+      "coarse_choice": "固定选左通道作为相同宏观输入下的示例决策，不是训练所得",
+      "regret_a_b": [
+        2,
+        0
+      ],
+      "can_be_distinguished_from_allowed_observation": true
+    },
+    "irrelevant": {
+      "q_a": [
+        1,
+        1
+      ],
+      "q_b": [
+        1,
+        1
+      ],
+      "meaning": "只换背景色，动作效用相同；不是所有画面差异都算骡。"
+    },
+    "hidden": {
+      "observations_identical": true,
+      "q_a": [
+        -1,
+        1
+      ],
+      "q_b": [
+        1,
+        -1
+      ],
+      "best_success_bound": 0.5,
+      "assumptions": "仅此平衡双世界、同一观测、无历史/探测且唯一正确动作的构造中；不是现实所有任务的50%上限。"
+    },
+    "limits": [
+      "细节恢复者在玩具中直接读允许的高分辨率网格；未学习在线gate，也未证明能低成本识别全部关键例外。",
+      "P0只检查定义可区分三类情形，不能用来主张新颖性、效率提升或顶会成果。"
+    ]
+  },
+  "cards_used": 0,
+  "author_model_runs": 0,
+  "second_round": {
+    "title": "第二轮否决式查新：收紧后的边界仍有重合",
+    "date": "2026-11-10",
+    "scope": "原始摘要、机构题录及Workshop题名入口核验；未新增全文精读、未运行作者代码，不是穷尽性或正式科技查新证明。",
+    "verdict": "第二轮结论：接触按需加深、宏观层级、观测可恢复性与潜表示保留、分阶段失效诊断均已有相关工作。宏观与骡保留为问题视角和实验工作定义；目前未确认独立新贡献，不建议按现有口头方案直接立项为新方法。 不是查新通过。",
+    "sources": [
+      {
+        "name": "What Can Latent World Models Know? Physical Information in Multimodal Predictive Representations",
+        "url": "https://arxiv.org/abs/2607.27017v4",
+        "scope": "最新v4原始摘要",
+        "type": "预印本；未核主会录取",
+        "overlap": "先检查原始观测序列中的参数恢复，再比较匹配的动作条件模型；预测目标与时域影响潜状态中的物理信息。直接限制“原始可见/潜变量丢失”的独立新颖性。",
+        "boundary": "单独区分可恢复与未编码不够。弱线性readout不等于信息完全缺失，原文摘要还报告预测可依赖弱线性可读的drag；必须分开可读性与实际作用。"
+      },
+      {
+        "name": "What a World Model Represents Is Three Questions",
+        "url": "https://arxiv.org/abs/2607.06640v2",
+        "scope": "最新v2原始摘要",
+        "type": "预印本；未核主会录取",
+        "overlap": "区分reachability、admission和assignment：监督是否能识别、信息是否进入潜状态、由哪条途径承载。",
+        "boundary": "不能把我们的三类情形直接宣称为新理论。加头提升probe或删模块损失变大，也不能自动证明模型在决策时使用了该信息。"
+      },
+      {
+        "name": "World Modeling through Spectral Alignment (SpecWM)",
+        "url": "https://arxiv.org/abs/2610.15429v2",
+        "scope": "最新v2原始摘要",
+        "type": "预印本；未核主会录取",
+        "overlap": "以目标相似核控制潜几何，讨论线性可恢复性、无关信息不变性，并用于CEM规划。",
+        "boundary": "“让表征保留物理关键信息”已有明确方法；不能只增加一个保留损失就当宏观与骡贡献。"
+      },
+      {
+        "name": "Beyond Task Success: Stage-Wise Reliability of World Model Planning under Sensing Degradation",
+        "url": "https://arxiv.org/abs/2609.07126v1",
+        "scope": "原始摘要",
+        "type": "预印本；未核主会录取",
+        "overlap": "以配对任务追踪感知扰动从表示、未来预测、规划偏好到物理结果；初始变化大小不保持下游影响排序。",
+        "boundary": "逐阶段诊断不是新贡献。新的实验如果只把感知退化换成压缩，仍可能只是窄复测；需要额外明确机制或可迁移的新发现。"
+      },
+      {
+        "name": "AD-WM: Action-Discriminative World Models for Counterfactual Model Predictive Control",
+        "url": "https://arxiv.org/abs/2609.30264v2",
+        "scope": "最新v2原始摘要",
+        "type": "预印本；未核主会录取",
+        "overlap": "低事实预测误差仍可能区分不了候选动作；通过动作恢复/逆动力学目标保留动作信息，并分析CEM相关elite regret。",
+        "boundary": "动作排序/遗憾指标和动作可分性不能被我们重新命名为骡机制。需要与它的训练目标、数据和候选权限具体比较；本轮尚未全文比较。"
+      },
+      {
+        "name": "World Model Interpretability: From Decoding Representations to Understanding Latent Worlds",
+        "url": "https://arxiv.org/abs/2610.25296v1",
+        "scope": "原始摘要",
+        "type": "Perspective，不是新增方法实证",
+        "overlap": "提出从可解码信息走向潜状态交互、演化和因果作用的Ground/Structure/Verify/Act研究议程。",
+        "boundary": "“可解码不等于被使用”是已有研究主张。不能把议程当成已完成的算法效果，也不能把同一议程当我们的原创理论。"
+      },
+      {
+        "name": "When and How Much to Imagine: Adaptive Test-Time Scaling with World Models for Visual Spatial Reasoning",
+        "url": "https://arxiv.org/abs/2602.08236v2",
+        "scope": "最新v2原始摘要",
+        "type": "预印本；未核主会录取",
+        "overlap": "AVIC先判断静态证据是否足够，再调用和扩展视觉想象；区分想象关键、边际和有害的情形。",
+        "boundary": "先判断证据再决定多想不是空白；视觉空间推理与控制的输入/评价不同，不能据此认定完全同题，也不能忽略其思路先例。"
+      },
+      {
+        "name": "Learning Important Subtle Signals in World Model Training",
+        "url": "https://escholarship.org/uc/item/6g76t8xw",
+        "scope": "UC Davis机构题录和摘要检索结果；二次打开遇429，未阅读全文",
+        "type": "Yukuan Lu，2025硕士论文；不是2026顶会论文",
+        "overlap": "重要但面积/强度较小的视觉信号在压缩中丢失，以分割辅助损失保留，并在Atari控制中验证。",
+        "boundary": "小面积、大决策作用并非新现象。需要排除仅重做小球/小物体保留，且不得把该硕士论文错误归为顶会工作。"
+      },
+      {
+        "name": "Reconstruction or Semantics? What Makes a Latent Space Useful for Robotic World Models",
+        "url": "https://arxiv.org/abs/2605.06388",
+        "scope": "原始摘要检索结果与题录；再次打开返回错误，未阅读全文",
+        "type": "预印本；Workshop页面有同名题目，不据此断言主会录取",
+        "overlap": "在固定动作条件潜扩散协议中比较重建和语义编码器及维度压缩，研究潜空间对世界模型效用的影响。",
+        "boundary": "表征与压缩消融已是既有问题；需要更具体的动作决策因果证据，不能只画压缩率—成功率曲线。"
+      },
+      {
+        "name": "Rethinking World Models for Safety-Critical Embodied Systems",
+        "url": "https://arxiv.org/abs/2609.03774v2",
+        "scope": "最新v2原始摘要",
+        "type": "Perspective；不是新算法实验已被验证",
+        "overlap": "RIWM围绕后果、干预、不确定性和可恢复性，讨论何时行动、修正、感知、延迟或弃权。",
+        "boundary": "可恢复/不可知后选择行动方式是已有方向性主张；不能将其当作本轮已经证明可行的执行机制。"
+      }
+    ],
+    "title_only_leads": [
+      "Epistemic Horizons: Uncertainty-Gated Active Sensing for Closed-Loop World Model Planning",
+      "When to Look: A Theory of Observation Timing for World-Model-Guided Active Agents",
+      "The Information Gap Process: A Unified Theory of Closed-Loop Active Sensing in World Models",
+      "Latent Observability in World Models: A Unified Framework for Active Sensing, Belief Convergence, and Closed-Loop Planning Efficiency"
+    ],
+    "lead_source": "https://cvpr26wmas.github.io/cvpr26wmas.html",
+    "lead_limit": "仅核到Workshop题目列表；未获取这些条目的原始摘要/方法，不据题名推断定理、实现、性能或与本方案完全相同。同名的哲学Epistemic Horizons文献已排除。",
+    "decision": "停止将宏观＋骡的组合本身作为新颖性主张。保留为受控复现/诊断主题；尚无已通过查新的新方法方案。",
+    "next_question": "待实验而非新颖性结论：在实际视觉规划器里，局部信息恢复对最终动作的作用能否在等信息、等预算、配对任务下稳定复现？如果近作已经覆盖同一问题与协议，就以复现学习收尾，不强行立题。",
+    "gates": [
+      "先明确和PokeWorld、Stage-Wise Reliability、AD-WM、DeepJEPA的具体区别；摘要未显示的部分一律标待全文核查。",
+      "先复现已有现象，再讨论新机制；换名称、换任务、换一种压缩率本身不构成贡献。",
+      "探针弱不等于信息消失，预测改善不等于决策改善，排序改善不等于闭环成功；每项各自留证据。",
+      "未来标签、仿真真值只能做离线诊断；不同任务集、候选集或算力下的数值不横比。"
+    ],
+    "self_audit": [
+      "聚合站上的PokeWorld旧标题和作者列表与当前arXiv v4不同，采用原始最新版；不照搬旧摘要的证书式强表述。",
+      "SpecWM等工作关于线性可恢复性的条件不能推广为所有信息可恢复或全部物理状态可识别。",
+      "Workshop题目线索、Perspective主张、预印本实验报告和主会录取是不同证据等级。",
+      "本轮无新增全文精读、作者模型执行、模型API调用或计算卡使用。"
+    ]
+  }
+}
